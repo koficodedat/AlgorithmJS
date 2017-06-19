@@ -1,0 +1,17 @@
+{
+  "name": "algorithmjs",
+  "version": "1.0.0",
+  "description": "Library for algorithms used to manipulate data",
+  "main": "alg.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "algorithm",
+    "data",
+    "manipulation",
+    "mathematics"
+  ],
+  "author": "Kofi Nedjoh",
+  "license": "MIT"
+}
