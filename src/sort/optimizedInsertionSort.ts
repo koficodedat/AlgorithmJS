@@ -18,7 +18,7 @@ import { compare } from '../util/compare';
  */
 
 
-export function optimizedInsertionSort (array: any[]): any[]{
+export function optimizedInsertionSort<T>(array: T[]): T[]{
     if( array instanceof Array ) { //TODO: implement a function to check if all values of the list are of the same type
 
         const length: number = array.length;
@@ -38,7 +38,7 @@ export function optimizedInsertionSort (array: any[]): any[]{
 
         //check and swap from second index
         for( let i = 2; i < length; i++ ){
-            const potentialLowerBound = array[i];
+            let potentialLowerBound = array[i];
             let j: number = i;
 
             while( compare(array[j], array[j -1]) === -1 ){
