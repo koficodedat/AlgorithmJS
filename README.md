@@ -7,6 +7,17 @@ It will contain many useful tools for data manipulation:
   Sort Algorithms
   Other useful utilities
   
+ ## Start:
+ 	npm install el-gorithm
+	....
+	var el require('el-gorithm');
+	
+ ### Demo:
+ 	https://npm.runkit.com/el-gorithm
+
+ ### NPM:
+  	https://www.npmjs.com/package/el-gorithm
+  
  ## Utility
  #### _arraySum([ number, ])_: 
  	sums the data in a numeric array
