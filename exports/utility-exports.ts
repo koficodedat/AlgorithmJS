@@ -1,12 +1,12 @@
-import { arraySum } from './src/util/arraySum';
-import { average } from './src/util/average';
-import { compare } from './src/util/compare';
-import { inversions } from './src/util/inversions';
-import { isSorted } from './src/util/isSorted';
-import { knuthShuffle } from './src/util/knuthShuffle';
-import { randSeq } from './src/util/randSeq';
-import { swapInArray } from './src/util/swapInArray';
-import { uniform } from './src/util/uniform';
+import { arraySum } from '../src/util/arraySum';
+import { average } from '../src/util/average';
+import { compare } from '../src/util/compare';
+import { inversions } from '../src/util/inversions';
+import { isSorted } from '../src/util/isSorted';
+import { knuthShuffle } from '../src/util/knuthShuffle';
+import { randSeq } from '../src/util/randSeq';
+import { swapInArray } from '../src/util/swapInArray';
+import { uniform } from '../src/util/uniform';
 
 export namespace Utility{
 
