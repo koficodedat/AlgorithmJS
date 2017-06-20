@@ -2,7 +2,7 @@
 
 /src/search
 
-/src/sort/insertionSort.js
+/src/sort/optimizedInsertionSort.js
 /src/util/iterator.js
 
 *.ts

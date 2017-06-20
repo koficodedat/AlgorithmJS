@@ -14,7 +14,7 @@ It will contain many useful tools for data manipulation:
 	
  ##### [Run El-gorithm Demo](https://npm.runkit.com/el-gorithm)
 
- ##### [El-gorithmn NPM](https://www.npmjs.com/package/el-gorithm)
+ ##### [El-gorithm NPM](https://www.npmjs.com/package/el-gorithm)
   
  ## Utility
  #### _arraySum([ number, ])_: 

@@ -10,11 +10,11 @@ var sort = require("./exports/sort-exports");
         module.exports = factory();
     }
     else {
-        root.ajs = factory();
+        root._ = factory();
     }
 }(this, function () {
     return {
-        //Functions
+        //Functions:
         //utilities
         arraySum: utility.Utility._arraySum,
         average: utility.Utility._average,
@@ -25,7 +25,7 @@ var sort = require("./exports/sort-exports");
         randSeq: utility.Utility._randSeq,
         swapInArray: utility.Utility._swapInArray,
         uniform: utility.Utility._uniform,
-        //sort functions
+        //sorts
         binarySort: sort.Sort._binarySort,
         insertionSort: sort.Sort._insertionSort,
         mergeSort: sort.Sort._mergeSort,
