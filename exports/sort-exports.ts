@@ -1,14 +1,14 @@
 import { binarySort } from '../src/sort/binarySort';
 import { mergeSort } from '../src/sort/mergeSort';
-import { optimizedInsertionSort } from '../src/sort/optimizedInsertionSort';
 import { selectionSort } from '../src/sort/selectionSort';
 import { shellSort } from '../src/sort/shellSort';
+import {insertionSort} from "../src/sort/insertionSort";
 
 export namespace Sort {
 
     _binarySort = binarySort;
     _mergeSort = mergeSort;
-    _insertionSort = optimizedInsertionSort;
+    _insertionSort = insertionSort;
     _selectionSort = selectionSort;
     _shellSort = shellSort;
 

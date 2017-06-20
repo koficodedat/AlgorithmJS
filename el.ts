@@ -8,13 +8,13 @@ import * as sort from './exports/sort-exports';
     } else if (typeof module === 'object' && module.exports) {
         module.exports = factory();
     } else {
-        root.ajs = factory();
+        root._ = factory();
     }
 
 }(this, function () {
     return {
 
-        //Functions
+        //Functions:
 
         //utilities
         arraySum:       utility.Utility._arraySum,
@@ -27,7 +27,7 @@ import * as sort from './exports/sort-exports';
         swapInArray:    utility.Utility._swapInArray,
         uniform:        utility.Utility._uniform,
 
-        //sort functions
+        //sorts
         binarySort:     sort.Sort._binarySort,
         insertionSort:  sort.Sort._insertionSort,
         mergeSort:      sort.Sort._mergeSort,
