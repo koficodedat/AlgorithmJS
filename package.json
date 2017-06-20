@@ -1,8 +1,8 @@
 {
-  "name": "algorithmjs",
-  "version": "1.0.0",
+  "name": "el-gorithm",
+  "version": "1.0.2",
   "description": "Library for algorithms used to manipulate data",
-  "main": "alg.ts",
+  "main": "el.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
