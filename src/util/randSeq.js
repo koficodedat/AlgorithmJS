@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var uniform_1 = require("./uniform");
+var warn_1 = require("./warn");
 /*
  randSeq(..)
  creates an array list of uniformly and randomly generated numbers
@@ -12,12 +13,19 @@ var uniform_1 = require("./uniform");
  */
 function randSeq(howMany, from, to, shouldExcludeEnds) {
     var shouldAccountForExclusivity = shouldExcludeEnds !== null && shouldExcludeEnds !== undefined && shouldExcludeEnds;
-    var lo = shouldAccountForExclusivity ? from + 1 : from;
-    var hi = shouldAccountForExclusivity ? to - 1 : to;
-    var randomSeqArray = [];
-    for (var i = 0; i < howMany; i++) {
-        randomSeqArray.push(uniform_1.uniform(lo, hi));
+    if (shouldAccountForExclusivity && (to - from) < 3) {
+        var randSeqWarn = new warn_1.default("randSeq(..)", "Explicitly excluding the ends: Difference between from and to must be at least 3", false);
+        randSeqWarn.log();
+        return [undefined];
     }
-    return randomSeqArray;
+    else {
+        var lo = shouldAccountForExclusivity ? from + 1 : from;
+        var hi = shouldAccountForExclusivity ? to - 1 : to;
+        var randomSeqArray = [];
+        for (var i = 0; i < howMany; i++) {
+            randomSeqArray.push(uniform_1.uniform(lo, hi));
+        }
+        return randomSeqArray;
+    }
 }
 exports.randSeq = randSeq;

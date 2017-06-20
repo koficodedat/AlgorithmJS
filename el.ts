@@ -21,6 +21,6 @@ import * as utility from './utility-exports'
         shuffle:        utility.Utility._knuthShuffle,
         randSeq:        utility.Utility._randSeq,
         swapInArray:    utility.Utility._swapInArray,
-        uniform:           utility.Utility._uniform
+        uniform:        utility.Utility._uniform
     };
 }));
