@@ -13,10 +13,12 @@ It will contain many useful tools for data manipulation:
 	var el require('el-gorithm');
 	
  ### Demo:
- 	https://npm.runkit.com/el-gorithm
+ 	https://npm.runkit.com/el-gorithm - automatic!
+	[El-gorithmn Demo](https://npm.runkit.com/el-gorithm)
 
  ### NPM:
-  	https://www.npmjs.com/package/el-gorithm
+  	https://www.npmjs.com/package/el-gorithm - automatic!
+	[El-gorithmn NPM](https://www.npmjs.com/package/el-gorithm)
   
  ## Utility
  #### _arraySum([ number, ])_: 
