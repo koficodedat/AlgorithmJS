@@ -1,4 +1,5 @@
 import { uniform } from './uniform'
+import Warn from './warn';
 
 /*
  randSeq(..)
@@ -13,14 +14,25 @@ import { uniform } from './uniform'
 export function randSeq(howMany: number, from: number, to: number, shouldExcludeEnds?: boolean): number[] {
 
     const shouldAccountForExclusivity = shouldExcludeEnds !== null && shouldExcludeEnds !== undefined && shouldExcludeEnds;
-    const lo = shouldAccountForExclusivity ? from + 1 : from;
-    const hi = shouldAccountForExclusivity ? to - 1 : to;
 
-    let randomSeqArray: number[] = [];
+    if( shouldAccountForExclusivity && (to - from) < 3 ){
 
-    for( let i = 0; i < howMany; i++ ){
-        randomSeqArray.push( uniform(lo,hi) );
+        let randSeqWarn = new Warn("randSeq(..)", "Explicitly excluding the ends: Difference between from and to must be at least 3", false);
+        randSeqWarn.log();
+        return [ undefined ];
+
+    }else{
+
+        const lo = shouldAccountForExclusivity ? from + 1 : from;
+        const hi = shouldAccountForExclusivity ? to - 1 : to;
+
+        let randomSeqArray: number[] = [];
+
+        for( let i = 0; i < howMany; i++ ){
+            randomSeqArray.push( uniform(lo,hi) );
+        }
+
+        return randomSeqArray;
     }
-
-    return randomSeqArray;
 }
+
