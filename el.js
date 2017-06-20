@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var utility = require("./utility-exports");
+var utility = require("./exports/utility-exports");
+var sort = require("./exports/sort-exports");
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         define([], factory);
@@ -13,6 +14,7 @@ var utility = require("./utility-exports");
     }
 }(this, function () {
     return {
+        //Functions
         //utilities
         arraySum: utility.Utility._arraySum,
         average: utility.Utility._average,
@@ -22,6 +24,12 @@ var utility = require("./utility-exports");
         shuffle: utility.Utility._knuthShuffle,
         randSeq: utility.Utility._randSeq,
         swapInArray: utility.Utility._swapInArray,
-        uniform: utility.Utility._uniform
+        uniform: utility.Utility._uniform,
+        //sort functions
+        binarySort: sort.Sort._binarySort,
+        insertionSort: sort.Sort._insertionSort,
+        mergeSort: sort.Sort._mergeSort,
+        selectionSort: sort.Sort._selectionSort,
+        shellSort: sort.Sort._shellSort
     };
 }));

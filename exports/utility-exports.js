@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var arraySum_1 = require("./src/util/arraySum");
-var average_1 = require("./src/util/average");
-var compare_1 = require("./src/util/compare");
-var inversions_1 = require("./src/util/inversions");
-var isSorted_1 = require("./src/util/isSorted");
-var knuthShuffle_1 = require("./src/util/knuthShuffle");
-var randSeq_1 = require("./src/util/randSeq");
-var swapInArray_1 = require("./src/util/swapInArray");
-var uniform_1 = require("./src/util/uniform");
+var arraySum_1 = require("./../src/util/arraySum");
+var average_1 = require("./../src/util/average");
+var compare_1 = require("./../src/util/compare");
+var inversions_1 = require("./../src/util/inversions");
+var isSorted_1 = require("./../src/util/isSorted");
+var knuthShuffle_1 = require("./../src/util/knuthShuffle");
+var randSeq_1 = require("./../src/util/randSeq");
+var swapInArray_1 = require("./../src/util/swapInArray");
+var uniform_1 = require("./../src/util/uniform");
 var Utility;
 (function (Utility) {
     Utility._arraySum = arraySum_1.arraySum;

@@ -10,7 +10,7 @@ It will contain many useful tools for data manipulation:
  ## Start:
  	npm install el-gorithm
 	....
-	var el require('el-gorithm');
+	var el = require('el-gorithm');
 	
  ##### [Run El-gorithm Demo](https://npm.runkit.com/el-gorithm)
 

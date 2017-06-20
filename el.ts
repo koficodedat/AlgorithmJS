@@ -1,4 +1,5 @@
-import * as utility from './utility-exports'
+import * as utility from './exports/utility-exports';
+import * as sort from './exports/sort-exports';
 
 (function (root, factory) {
 
@@ -12,6 +13,9 @@ import * as utility from './utility-exports'
 
 }(this, function () {
     return {
+
+        //Functions
+
         //utilities
         arraySum:       utility.Utility._arraySum,
         average:        utility.Utility._average,
@@ -21,6 +25,13 @@ import * as utility from './utility-exports'
         shuffle:        utility.Utility._knuthShuffle,
         randSeq:        utility.Utility._randSeq,
         swapInArray:    utility.Utility._swapInArray,
-        uniform:           utility.Utility._uniform
+        uniform:        utility.Utility._uniform,
+
+        //sort functions
+        binarySort:     sort.Sort._binarySort,
+        insertionSort:  sort.Sort._insertionSort,
+        mergeSort:      sort.Sort._mergeSort,
+        selectionSort:  sort.Sort._selectionSort,
+        shellSort:      sort.Sort._shellSort
     };
 }));
