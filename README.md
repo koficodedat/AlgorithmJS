@@ -21,7 +21,7 @@ It will contain many useful tools for data manipulation:
  	sums the data in a numeric array
  #### _average([ number, ])_:
  	averages the data in a numeric array
- #### _compare( T, T)_: T = number | string
+ #### _compare( first: T, second: T)_: T = number | string
  	compares two arguments for equality
  #### _inversions([ T, ])_: T = number | string
  	determines the number of swaps required to sort an array of number or string objects
@@ -29,10 +29,10 @@ It will contain many useful tools for data manipulation:
  	check if an array of numbers or strings are sorted
  #### _shuffle([ T, ])_: T = number | string
  	uniformly shuffles an array of numbers or strings
- #### _ranSeq(number, number, number, boolean?)_: 
+ #### _ranSeq(howMany: number, from: number, to: number, shouldExcludeEnds (default = false): boolean?)_: 
  	gives a sequence of uniform randomly generated numbers in an array based on how many is requested
- #### _swapInArray(number, number, [ T, ])_: T = number | string
+ #### _swapInArray(firstIndex: number, secondIndex: number, array: [ T, ])_: T = number | string. *Returns nothing.
  	swaps the values at given index in an array
 	* might take this out if feedback of usage is less to none
- #### _uniform(number,number)_:
+ #### _uniform(first: number, second: number)_:
  	gives a uniform random number between two numbers

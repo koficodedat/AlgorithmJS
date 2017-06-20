@@ -10,8 +10,8 @@ import Warn from "./warn";
 
 export function uniform(from: number, to: number): number{
     if( !(from < to) ){
-        let isSortWarn = new Warn("uniform(..)", "beginning number must be less than ending number", false);
-        isSortWarn.log();
+        let uniformWarn = new Warn("uniform(..)", "beginning number must be less than ending number", false);
+        uniformWarn.log();
         return undefined;
     }
     return from + ( Math.random() * (to - from) );

@@ -10,8 +10,8 @@ var warn_1 = require("./warn");
  */
 function uniform(from, to) {
     if (!(from < to)) {
-        var isSortWarn = new warn_1.default("uniform(..)", "beginning number must be less than ending number", false);
-        isSortWarn.log();
+        var uniformWarn = new warn_1.default("uniform(..)", "beginning number must be less than ending number", false);
+        uniformWarn.log();
         return undefined;
     }
     return from + (Math.random() * (to - from));

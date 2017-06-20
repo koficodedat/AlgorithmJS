@@ -1,4 +1,4 @@
-import compare from '../util/compare';
+import { compare } from '../util/compare';
 
 export function sort<T>(array: T[],aux: T[], lo: number, hi: number){
 

@@ -23,7 +23,7 @@ function merge(array, aux, lo, mid, hi) {
                 array[k] = aux[j++];
             else if (j > hi)
                 array[k] = aux[i++];
-            else if (compare_1.default(aux[j], aux[i]) === -1)
+            else if (compare_1.compare(aux[j], aux[i]) === -1)
                 array[k] = aux[j++];
             else
                 array[k] = aux[i++];
@@ -45,7 +45,7 @@ function getInversions(array, aux, lo, mid, hi) {
                 array[k] = aux[j++];
             else if (j > hi)
                 array[k] = aux[i++];
-            else if (compare_1.default(aux[j], aux[i]) === -1) {
+            else if (compare_1.compare(aux[j], aux[i]) === -1) {
                 array[k] = aux[j++];
                 inversions += (mid - i + 1);
             }
