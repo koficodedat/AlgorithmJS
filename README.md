@@ -36,3 +36,16 @@ It will contain many useful tools for data manipulation:
 	* might take this out if feedback of usage is less to none
  #### _uniform(number,number)_:
  	gives a uniform random number between two numbers
+ 		
+ 	
+ ## Sort
+ #### _binarySort([ T, ])_: T = number | string
+    sorts an array of elements using binary sort, O(nlogn) in worst case
+ #### _insertionSort([ T, ])_: T = number | string
+     sorts an array of elements using insertion sort, O(nlog(n)) in worst case and O(1/2 n^2) on average
+ #### _mergeSort([ T, ])_: T = number | string
+    sorts an array of elements using merge sort, O(n2) in worst case and O(nlog(n)) on average
+ #### _selectionSort([ T, ])_: T = number | string
+     sorts an array of elements using selection sort, O(n2) in worst case
+ #### _shellSort([ T, ])_: T = number | string
+     sorts an array of elements using shell sort, O(n2) in worst case and O(nlog(n)) on average
