@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var utility = require("./exports/utility-exports");
 var sort = require("./exports/sort-exports");
-var datastructure = require("./exports/data-structure-exports");
+// import * as datastructure from './exports/data-structure-exports';
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         define([], factory);
@@ -32,11 +32,5 @@ var datastructure = require("./exports/data-structure-exports");
         mergeSort: sort.Sort._mergeSort,
         selectionSort: sort.Sort._selectionSort,
         shellSort: sort.Sort._shellSort,
-        //Class:
-        //data Structure:
-        Bag: datastructure.DataStructure._bag,
-        Queue: datastructure.DataStructure._queue,
-        Stack: datastructure.DataStructure._stack,
-        Vector: datastructure.DataStructure._vector
     };
 }));

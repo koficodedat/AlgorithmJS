@@ -5,3 +5,7 @@
 /src/sort/optimizedInsertionSort.js
 
 *.ts
+
+#temporarily rolled back data-structures
+src/data-structure
+exports/data-structure-exports.ts

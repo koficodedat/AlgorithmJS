@@ -1,6 +1,6 @@
 import * as utility from './exports/utility-exports';
 import * as sort from './exports/sort-exports';
-import * as datastructure from './exports/data-structure-exports';
+// import * as datastructure from './exports/data-structure-exports';
 
 (function (root, factory) {
 
@@ -38,13 +38,13 @@ import * as datastructure from './exports/data-structure-exports';
 
 
 
-        //Class:
-
-        //data Structure:
-        Bag:            datastructure.DataStructure._bag,
-        Queue:          datastructure.DataStructure._queue,
-        Stack:          datastructure.DataStructure._stack,
-        Vector:         datastructure.DataStructure._vector
+        // //Class:
+        //
+        // //data Structure:
+        // Bag:            datastructure.DataStructure._bag,
+        // Queue:          datastructure.DataStructure._queue,
+        // Stack:          datastructure.DataStructure._stack,
+        // Vector:         datastructure.DataStructure._vector
 
 
     };

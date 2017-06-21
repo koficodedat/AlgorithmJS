@@ -18,7 +18,7 @@ var Queue = (function () {
         this.queueSize = 0;
     }
     Queue.prototype.isEmpty = function () {
-        return this.first === null;
+        return this.first === undefined || this.first === null;
     };
     Queue.prototype.size = function () {
         return this.queueSize;
