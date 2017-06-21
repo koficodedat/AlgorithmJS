@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var uniform_1 = require("./uniform");
-var warn_1 = require("./warn");
+var warn_1 = require("../helpers/warn");
 /*
  randSeq(..)
  creates an array list of uniformly and randomly generated numbers

@@ -1,8 +1,5 @@
-/src/data-structure
-
 /src/search
 
 /src/sort/optimizedInsertionSort.js
-/src/util/iterator.js
 
 *.ts
