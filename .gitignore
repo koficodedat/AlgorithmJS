@@ -11,3 +11,13 @@
 node_modules
 
 *.ts
+
+el.ts
+sort-exports.ts
+utility-exports.ts
+binarySort.ts
+mergeSort.ts
+optimizedInsertionSort.ts
+selectionSort.ts
+shellSort.ts
+src/util/*.ts

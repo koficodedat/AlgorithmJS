@@ -49,3 +49,47 @@ It will contain many useful tools for data manipulation:
     sorts an array of elements using selection sort, O(n2) in worst case
  #### _shellSort([ T, ])_: Function{} T = number | string
     sorts an array of elements using shell sort, O(n2) in worst case and O(nlog(n)) on average
+         
+ ## Data Structure
+ ## _Bag_ : Class{} 
+ ####   _Bag Data Strcuture:_
+      + Implements 
+        1. isEmpty() -> checks to see if there Bag has any item. returns a boolean
+        2. size() -> gets the count of items in the Bag. returns a number
+        3. add( T ) -> adds an item into the Bag. T = any
+        4. iterator() -> iterates over the items in the Bag
+ ## _Queue_ : Class{} 
+ ####  _Queue Data Strcuture:_
+      + Implements 
+        1. isEmpty() -> checks to see if there Queue has any item. returns a boolean
+        2. size() -> gets the count of items in the Queue. returns a number
+        3. peek() -> 'peeks' the Queue and gives you the first element if any
+        4. enqueue(T) -> adds an item to the Queue in a FIFO manner. T = any
+        5. dequeue() -> removes an item from the Queue in a FIFO manner
+        4. iterator() -> iterates over the items in the Queue
+ ## _Stack_ : Class{} 
+ ####   _Stack Data Strcuture:_
+      + Implements 
+        1. isEmpty() -> checks to see if there Stack has any item. returns a boolean
+        2. size() -> gets the count of items in the Stack. returns a number
+        3. push(T) -> adds an item to the Stack in a FILO manner. T = any
+        4. pop() -> removes an item from the Stack in a FIFO manner
+        5. peek() -> 'peeks' the Stack and gives you the last element if any
+        6. iterator() -> iterates over the items in the Stack
+ ## _Vector_ : Class{} 
+ ####   _Vector Data Structure:_
+ #####        added vector functions:
+        1. initVec(...number) -> initialize a vector with a Rest parameter
+        2. initVecWithArray(number[]) -> initialize a vector with an Array parameter
+        3. zeroVec(number) -> initialize an n dimension vector with zero values. n is the number of dimensions
+        4. isSameLength( Vector | Vector[] ) -> checks to see if the Vectors parameters have the same length as the current vector
+        5. vec() -> returns the Vector
+ #####        base vector functions:
+        6. dot() -> calculates the dot product of the current vector and the one passed in
+        7. plus( Vector ) -> calculates the sum of the current vector and the one passed in
+        8. minus( Vector ) -> calculates the difference of the current vector and the one passed in
+        9. magnitude() -> calculates the magnitude of the current vector
+        10.distance() -> calculates the distance of the current vector
+        11.cartesian( index ) -> gets the item at index of the current vector
+        12.scale( scalar ) -> calculates the scalar value of the current vector with the scalar passed
+        13.unit( dimension ) -> creates a unit vector of n dimensions
