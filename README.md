@@ -51,6 +51,14 @@ It will contain many useful tools for data manipulation:
     sorts an array of elements using shell sort, O(n2) in worst case and O(nlog(n)) on average
          
  ## Data Structure
+ ###	NOTE: 	All data structures defined below implement the Unidirectional Iterator except for _Vector_
+ 		It is done throug the .iterator() call of the respective data structures.
+		The .iterator call further implements the following listed functions:
+			- hasNext()
+			- next()
+			- remove()
+			- list()
+			
  ## _Bag_ : Class{} 
  ####   _Bag Data Strcuture:_
       + Implements 
