@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var rand = require("../util/randSeq");
 var VectorImpl = (function () {
     function VectorImpl() {
         this.vector = { dimension: 0, data: [] };
@@ -40,7 +39,7 @@ var VectorImpl = (function () {
     VectorImpl.prototype.plus = function (vector) {
         if (!this.isSameLength([this, vector]))
             throw new Error('Vectors must be of the same length');
-        var newVector = this.zeroVec(this.vector.dimension);
+        var newVector = new VectorImpl();
         for (var i = 0; i < this.vector.dimension; i++) {
             newVector.vector.data[i] = this.vector.data[i] + vector.vector.data[i];
         }
@@ -49,7 +48,7 @@ var VectorImpl = (function () {
     VectorImpl.prototype.minus = function (vector) {
         if (!this.isSameLength([this, vector]))
             throw new Error('Vectors must be of the same length');
-        var newVector = this.zeroVec(this.vector.dimension);
+        var newVector = new VectorImpl();
         for (var i = 0; i < this.vector.dimension; i++) {
             newVector.vector.data[i] = this.vector.data[i] - vector.vector.data[i];
         }
@@ -65,20 +64,20 @@ var VectorImpl = (function () {
         return this.vector.data[index];
     };
     VectorImpl.prototype.scale = function (scalar) {
-        var newVector = this.zeroVec(this.vector.dimension);
+        var newVector = new VectorImpl();
+        newVector.vector.dimension = this.vector.dimension;
         for (var i = 0; i < this.vector.dimension; i++) {
+            console.log('vector', this.vector);
+            console.log('index', i);
+            console.log('vector at index', this.vector.data[i]);
             newVector.vector.data[i] = scalar * this.vector.data[i];
         }
         return newVector;
     };
-    VectorImpl.prototype.unit = function (dimension) {
-        var arrayOfNumbers = rand.randSeq(dimension, 0, dimension);
-        var newVector = this.initVec.apply(this, arrayOfNumbers);
-        var mag = newVector.magnitude();
-        if (mag !== 0) {
-            return this.scale((1 / mag));
-        }
-        return undefined;
+    VectorImpl.prototype.unit = function () {
+        if (this.magnitude() === 0)
+            throw new Error('Zero-vector has no direction');
+        return this.scale(1.0 / this.magnitude());
     };
     VectorImpl.prototype.isSameLength = function (x) {
         if (x instanceof VectorImpl) {
