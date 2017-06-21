@@ -14,17 +14,11 @@ var VectorImpl = (function () {
         for (var _i = 0; _i < arguments.length; _i++) {
             values[_i] = arguments[_i];
         }
-        this.vector = { dimension: 0, data: [] };
-        for (var i = 0; i < values.length; i++) {
-            this.vector.data[i] = values[i];
-        }
+        this.vector = { dimension: values.length, data: values };
         return this;
     };
     VectorImpl.prototype.initVecWithArray = function (values) {
-        this.vector = { dimension: 0, data: [] };
-        for (var i = 0; i < values.length; i++) {
-            this.vector.data[i] = values[i];
-        }
+        this.vector = { dimension: values.length, data: values };
         return this;
     };
     VectorImpl.prototype.zeroVec = function (dimension) {
