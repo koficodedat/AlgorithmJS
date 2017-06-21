@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var rand = require("../util/randSeq");
 var VectorImpl = (function () {
     function VectorImpl() {
-        this.vector.dimension = 0;
-        this.vector.data = [];
+        this.vector = { dimension: 0, data: [] };
     }
+    ;
     VectorImpl.prototype.vec = function () {
         return this.vector;
     };
@@ -16,14 +16,14 @@ var VectorImpl = (function () {
         }
         this.vector = { dimension: 0, data: [] };
         for (var i = 0; i < values.length; i++) {
-            this.vector.data[i] = 0;
+            this.vector.data[i] = values[i];
         }
         return this;
     };
     VectorImpl.prototype.initVecWithArray = function (values) {
         this.vector = { dimension: 0, data: [] };
         for (var i = 0; i < values.length; i++) {
-            this.vector.data[i] = 0;
+            this.vector.data[i] = values[i];
         }
         return this;
     };
