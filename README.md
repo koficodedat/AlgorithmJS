@@ -100,4 +100,4 @@ It will contain many useful tools for data manipulation:
         10.distance() -> calculates the distance of the current vector
         11.cartesian( index ) -> gets the item at index of the current vector
         12.scale( scalar ) -> calculates the scalar value of the current vector with the scalar passed
-        13.unit( dimension ) -> creates a unit vector of n dimensions
+        13.unit() -> creates a unit vector or direction of the current vector
