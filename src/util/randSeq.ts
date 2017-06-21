@@ -1,5 +1,5 @@
 import { uniform } from './uniform'
-import Warn from './warn';
+import Warn from '../helpers/warn';
 
 /*
  randSeq(..)

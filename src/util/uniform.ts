@@ -1,4 +1,4 @@
-import Warn from "./warn";
+import Warn from "../helpers/warn";
 
 /*
  uniform(..)

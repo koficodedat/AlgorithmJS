@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var warn_1 = require("./warn");
+var warn_1 = require("../helpers/warn");
 /*
  uniform(..)
  generates a random number between two numbers uniformly
