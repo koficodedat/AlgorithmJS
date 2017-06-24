@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var arraySum_1 = require("./arraySum");
 /*
  average(..)
@@ -11,3 +11,4 @@ function average(array) {
     return arraySum_1.arraySum(array) / array.length;
 }
 exports.average = average;
+//# sourceMappingURL=average.js.map

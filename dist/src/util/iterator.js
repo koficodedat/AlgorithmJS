@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 /*
  UniIterator Interface Implementation
  */
@@ -77,3 +77,4 @@ var UniIteratorImpl = (function () {
     return UniIteratorImpl;
 }());
 exports.UniIteratorImpl = UniIteratorImpl;
+//# sourceMappingURL=iterator.js.map

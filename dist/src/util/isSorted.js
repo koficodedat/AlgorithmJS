@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var compare_1 = require("./compare");
 /*
  isSorted(..)
@@ -17,3 +17,4 @@ function isSorted(array) {
     return true;
 }
 exports.isSorted = isSorted;
+//# sourceMappingURL=isSorted.js.map

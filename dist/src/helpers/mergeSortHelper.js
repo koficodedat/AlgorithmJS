@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var compare_1 = require("../util/compare");
 function sort(array, aux, lo, hi) {
     if (hi <= lo)
@@ -56,3 +56,4 @@ function getInversions(array, aux, lo, mid, hi) {
     return inversions;
 }
 exports.getInversions = getInversions;
+//# sourceMappingURL=mergeSortHelper.js.map

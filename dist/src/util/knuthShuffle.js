@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var swapInArray_1 = require("./swapInArray");
 /*
  knuthShuffle(..)
@@ -18,3 +18,4 @@ function knuthShuffle(array) {
     return [undefined];
 }
 exports.knuthShuffle = knuthShuffle;
+//# sourceMappingURL=knuthShuffle.js.map

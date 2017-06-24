@@ -1,6 +1,6 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var meregSortHelper_1 = require("../helpers/meregSortHelper");
+exports.__esModule = true;
+var mergeSortHelper_1 = require("../helpers/mergeSortHelper");
 /*
  inversions(..)
  gets the number of swaps needed to sort a list
@@ -25,6 +25,7 @@ function count(array, duplicate, aux, lo, hi) {
     var mid = Math.floor(lo + (hi - lo) / 2);
     inversions += count(array, duplicate, aux, lo, mid);
     inversions += count(array, duplicate, aux, mid + 1, hi);
-    inversions += meregSortHelper_1.getInversions(duplicate, aux, lo, mid, hi);
+    inversions += mergeSortHelper_1.getInversions(duplicate, aux, lo, mid, hi);
     return inversions;
 }
+//# sourceMappingURL=inversions.js.map
