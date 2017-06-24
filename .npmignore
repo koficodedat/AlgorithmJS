@@ -1,5 +1,6 @@
-/src/search
+/dist/**/*.*.map
 
-/src/sort/optimizedInsertionSort.js
+/exports
+/src
 
-*.ts
+/el.*

@@ -10,4 +10,8 @@
 
 node_modules
 
-*.ts
+/exports/*.js
+
+/src/**/*.js
+
+/el.js
