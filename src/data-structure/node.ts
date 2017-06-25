@@ -9,10 +9,10 @@ export interface BiNode<T>{
     previous: UniNode<T>;
 }
 
-export interface TreeNode<T>{
+export interface TreeNode<V>{
     key: number | string;
-    value: T;
-    left: TreeNode<T>;
-    right: TreeNode<T>;
+    value: V;
+    left: TreeNode<V>;
+    right: TreeNode<V>;
     size: number;
 }

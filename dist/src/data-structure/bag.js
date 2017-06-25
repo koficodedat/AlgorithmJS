@@ -31,4 +31,3 @@ var Bag = (function () {
     return Bag;
 }());
 exports.Bag = Bag;
-//# sourceMappingURL=bag.js.map

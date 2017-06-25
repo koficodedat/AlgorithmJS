@@ -1,4 +1,27 @@
 "use strict";
+/*
+ This file contains a simple implementation of a one by n dimensional vector.
+ */
+/*
+ This is an implementation of a 1 by N dimensional Vector data structure.
+ It implements:
+    base vector functions:
+        dot(..)
+        plus(..)
+        minus(..)
+        magnitude()
+        distance(..)
+        cartesian(..)
+        unit()
+        scale(..)
+
+    added vector functions:
+        vec()
+        initVec(..)
+        initVecWithArray(..)
+        zeroVec(..)
+        isSameLength(..)
+ */
 exports.__esModule = true;
 var VectorImpl = (function () {
     function VectorImpl() {
@@ -57,8 +80,10 @@ var VectorImpl = (function () {
     VectorImpl.prototype.magnitude = function () {
         return Math.sqrt(this.dot(this));
     };
-    VectorImpl.prototype.distance = function () {
-        return this.minus(this).magnitude();
+    VectorImpl.prototype.distance = function (vector) {
+        if (!this.isSameLength([this, vector]))
+            throw new Error('Vectors must be of the same length');
+        return this.minus(vector).magnitude();
     };
     VectorImpl.prototype.cartesian = function (index) {
         return this.vector.data[index];
@@ -67,9 +92,6 @@ var VectorImpl = (function () {
         var newVector = new VectorImpl();
         newVector.vector.dimension = this.vector.dimension;
         for (var i = 0; i < this.vector.dimension; i++) {
-            console.log('vector', this.vector);
-            console.log('index', i);
-            console.log('vector at index', this.vector.data[i]);
             newVector.vector.data[i] = scalar * this.vector.data[i];
         }
         return newVector;
@@ -96,4 +118,3 @@ var VectorImpl = (function () {
     return VectorImpl;
 }());
 exports.VectorImpl = VectorImpl;
-//# sourceMappingURL=vector.js.map

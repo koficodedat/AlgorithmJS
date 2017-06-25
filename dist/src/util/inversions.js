@@ -28,4 +28,3 @@ function count(array, duplicate, aux, lo, hi) {
     inversions += mergeSortHelper_1.getInversions(duplicate, aux, lo, mid, hi);
     return inversions;
 }
-//# sourceMappingURL=inversions.js.map

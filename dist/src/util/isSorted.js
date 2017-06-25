@@ -17,4 +17,3 @@ function isSorted(array) {
     return true;
 }
 exports.isSorted = isSorted;
-//# sourceMappingURL=isSorted.js.map

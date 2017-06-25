@@ -1,5 +1,3 @@
-import * as rand from '../util/randSeq';
-
 /*
  This file contains a simple implementation of a one by n dimensional vector.
  */
@@ -11,9 +9,9 @@ import * as rand from '../util/randSeq';
         plus(..)
         minus(..)
         magnitude()
-        distance()
+        distance(..)
         cartesian(..)
-        unit(..)
+        unit()
         scale(..)
 
     added vector functions:
@@ -103,8 +101,9 @@ export class VectorImpl{
         return Math.sqrt( this.dot(this) );
     }
 
-    distance(): number{
-        return  this.minus(this).magnitude();
+    distance(vector: VectorImpl): number{
+        if( !this.isSameLength([this,vector])) throw new Error('Vectors must be of the same length');
+        return  this.minus(vector).magnitude();
     }
 
     cartesian(index: number): number{
@@ -116,9 +115,6 @@ export class VectorImpl{
         newVector.vector.dimension = this.vector.dimension;
 
         for( let i = 0; i < this.vector.dimension; i++ ){
-            console.log('vector',this.vector);
-            console.log('index',i);
-            console.log('vector at index',this.vector.data[i]);
             newVector.vector.data[i] = scalar * this.vector.data[i];
         }
 

@@ -11,4 +11,3 @@ function average(array) {
     return arraySum_1.arraySum(array) / array.length;
 }
 exports.average = average;
-//# sourceMappingURL=average.js.map

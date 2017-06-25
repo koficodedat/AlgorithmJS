@@ -21,4 +21,3 @@ function randSeq(howMany, from, to, shouldExcludeEnds) {
     return randomSeqArray;
 }
 exports.randSeq = randSeq;
-//# sourceMappingURL=randSeq.js.map
