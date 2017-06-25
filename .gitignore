@@ -13,3 +13,5 @@ node_modules
 /exports/*.js
 
 /src/**/*.js
+
+el.js
