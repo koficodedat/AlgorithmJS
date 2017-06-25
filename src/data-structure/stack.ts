@@ -1,7 +1,6 @@
 import { UniIteratorImpl } from "../util/iterator";
 import {Bag} from "./bag";
 
-
 /*
  This is an implementation of a Stack data structure.
  It implements:

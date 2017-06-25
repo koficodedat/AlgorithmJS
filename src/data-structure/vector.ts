@@ -1,5 +1,3 @@
-import * as rand from '../util/randSeq';
-
 /*
  This file contains a simple implementation of a one by n dimensional vector.
  */
