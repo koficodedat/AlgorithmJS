@@ -13,15 +13,20 @@
     ...
     
     var sortedList = el.mergeSort([3,5,2,6,4]); // [2,3,4,5,6]
-    
-#### API
--   [Utility](./doc/utility.md)
--   [Sort](./doc/sort.md)
--   [Data Structure](./doc/data-structure.md)
 
+#### API
+- _API Walkthrough on Github_
+    - [Utility](./doc/utility.md)
+    - [Sort](./doc/sort.md)
+    - [Data Structure](./doc/data-structure.md)
+
+- _API Walkthrough on Runkit_
+   - [Utility](https://npm.runkit.com/el-gorithm/doc/utility.md)
+   - [Sort](https://npm.runkit.com/el-gorithm/doc/sort.md)
+   - [Data Structure](https://npm.runkit.com/el-gorithm/doc/data-structure.md)
     
 #### Version
->    1.0.20
+>    1.0.23
     
 #### Contribution
 >   Any one that wants to help with anything 
