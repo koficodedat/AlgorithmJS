@@ -13,4 +13,3 @@ var DataStructure;
     DataStructure._vector = vector_1.VectorImpl;
     DataStructure._binSearchTree = binSearchTree_1.BinSearchTree;
 })(DataStructure = exports.DataStructure || (exports.DataStructure = {}));
-//# sourceMappingURL=data-structure-exports.js.map

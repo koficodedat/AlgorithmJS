@@ -15,14 +15,12 @@
     var sortedList = el.mergeSort([3,5,2,6,4]); // [2,3,4,5,6]
     
 #### API
-    - [Utility](docs/UTILITY.md)
-    - [Sort](docs/SORT.md)
-    - [Data Structure](docs/DATASTRUCTURE.md)
+-   [Utility](docs/utility.md)
+-   [Sort](docs/sort.md)
+-   [Data Structure](docs/data-structure.md)
     
 #### Version
     1.0.17
     
 #### Credits
-    This library takes motivation from resources including:
-    - Algorithms 4th Edition by Robert Sedgewick and Kevin Wayne.
-    
+-   Algorithms 4th Edition by Robert Sedgewick and Kevin Wayne.

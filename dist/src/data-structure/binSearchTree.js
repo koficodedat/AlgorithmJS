@@ -2,6 +2,28 @@
 exports.__esModule = true;
 var compare_1 = require("../util/compare");
 var queue_1 = require("./queue");
+/*
+ This is an implementation of a Binary Search Tree with Key/Value Pairs data structure.
+ It implements:
+     isEmpty()
+     size()
+     contains(..)
+     get(..)
+     put(..)
+     remove(..)
+     removeMin()
+     removeMax()
+     minKey()
+     maxKey()
+     floor(..)
+     ceil(..)
+     rank(..)
+     selectKeyForRank(..)
+     keys()
+     iterator()
+     keysInLevelOrder()
+     height()
+ */
 var BinSearchTree = (function () {
     function BinSearchTree() {
         this.root = null;
@@ -13,9 +35,9 @@ var BinSearchTree = (function () {
         return this.sizeOfNode(this.root);
     };
     BinSearchTree.prototype.contains = function (key) {
-        if (key === null)
+        if (key === null || key === undefined)
             throw new Error('Argument to contains() is null');
-        if (typeof key === this.root.key)
+        if (this.root !== null && typeof key === this.root.key)
             throw new Error('Key is of different type than root');
         return this.get(key) !== null;
     };
@@ -23,9 +45,10 @@ var BinSearchTree = (function () {
         return this.getFromNodeAtKey(this.root, key);
     };
     BinSearchTree.prototype.put = function (key, value) {
-        if (key === null)
+        //Test
+        if (key === null || key === undefined)
             throw new Error("Called put() with a null key");
-        if (typeof key === this.root.key)
+        if (this.root !== null && typeof key === this.root.key)
             throw new Error('Key is of different type than root');
         if (value === null) {
             this.remove(key);
@@ -34,9 +57,9 @@ var BinSearchTree = (function () {
         this.root = this.putInNodeAtKey(this.root, key, value);
     };
     BinSearchTree.prototype.remove = function (key) {
-        if (key === null)
+        if (key === null || key === undefined)
             throw new Error("Called delete() with a null key");
-        if (typeof key === this.root.key)
+        if (this.root !== null && typeof key === this.root.key)
             throw new Error('Key is of different type than root');
         this.root = this.removeInNodeAtKey(this.root, key);
     };
@@ -53,31 +76,33 @@ var BinSearchTree = (function () {
     BinSearchTree.prototype.minKey = function () {
         if (this.isEmpty())
             throw new Error("Called min() with empty tree");
-        return this.getMinNodeFrom(this.root).key;
+        else
+            return this.getMinNodeFrom(this.root).key;
     };
     BinSearchTree.prototype.maxKey = function () {
         if (this.isEmpty())
             throw new Error("Called min() with empty tree");
-        return this.getMaxNodeFrom(this.root).key;
+        else
+            return this.getMaxNodeFrom(this.root).key;
     };
     BinSearchTree.prototype.floor = function (key) {
-        if (key === null)
+        if (key === null || key === undefined)
             throw new Error("Argument to floor() is null");
         if (this.isEmpty())
             throw new Error("Called min() with empty tree");
         var floorNode = this.floorFromNodeToKey(this.root, key);
-        return floorNode === null ? null : floorNode.key;
+        return floorNode === null || floorNode === undefined ? null : floorNode.key;
     };
     BinSearchTree.prototype.ceil = function (key) {
-        if (key === null)
+        if (key === null || key === undefined)
             throw new Error("Argument to floor() is null");
         if (this.isEmpty())
             throw new Error("Called min() with empty tree");
         var ceilNode = this.ceilFromNodeToKey(this.root, key);
-        return ceilNode === null ? null : ceilNode.key;
+        return ceilNode === null || ceilNode === undefined ? null : ceilNode.key;
     };
     BinSearchTree.prototype.rank = function (key) {
-        if (key === null)
+        if (key === null || key === undefined)
             throw new Error("Argument to rank() is null");
         return this.rankOfKeyFromNode(key, this.root);
     };
@@ -98,7 +123,7 @@ var BinSearchTree = (function () {
         nodes.enqueue(this.root);
         while (!nodes.isEmpty()) {
             var currentNode = nodes.dequeue();
-            if (currentNode === null)
+            if (currentNode === null || currentNode === undefined)
                 continue;
             keys.enqueue(currentNode.key);
             nodes.enqueue(currentNode.left);
@@ -112,18 +137,18 @@ var BinSearchTree = (function () {
     //todo: checks for binary tree assertions. will be static functions so can be used without instantiation
     //private functions
     BinSearchTree.prototype.sizeOfNode = function (node) {
-        if (node === null)
+        if (node === null || node === undefined)
             return 0;
         return node.size;
     };
     BinSearchTree.prototype.getFromNodeAtKey = function (node, key) {
-        if (key === null)
+        if (key === null || key === undefined)
             throw new Error("Called getFromNodeAtKey() with a null key");
-        if (typeof key === this.root.key)
+        if (this.root !== null && typeof key === this.root.key)
             throw new Error('Key is of different type than root');
-        if (node === null)
+        if (node === null || node === undefined)
             return null;
-        var _compare = compare_1.compare(this.root.key, key);
+        var _compare = compare_1.compare(key, node.key);
         if (_compare < 0)
             return this.getFromNodeAtKey(node.left, key);
         if (_compare > 0)
@@ -131,21 +156,24 @@ var BinSearchTree = (function () {
         return node.value;
     };
     BinSearchTree.prototype.putInNodeAtKey = function (node, key, value) {
-        if (key === null)
+        if (key === null || key === undefined)
             throw new Error("Called put() with a null key");
-        if (node === null)
+        if (node === null || node === undefined)
             return { key: key, value: value, left: null, right: null, size: 1 };
-        var _compare = compare_1.compare(this.root.key, key);
+        var _compare = compare_1.compare(key, node.key);
         if (_compare < 0)
             node.left = this.putInNodeAtKey(node.left, key, value);
-        if (_compare > 0)
+        else if (_compare > 0)
             node.right = this.putInNodeAtKey(node.right, key, value);
-        return { key: key, value: value, left: node.left, right: node.right, size: node.left.size + node.right.size + 1 };
+        else
+            node.value = value;
+        node.size = this.sizeOfNode(node.left) + this.sizeOfNode(node.right) + 1;
+        return node;
     };
     BinSearchTree.prototype.removeInNodeAtKey = function (node, key) {
-        if (node === null)
+        if (node === null || node === undefined)
             return null;
-        var _compare = compare_1.compare(this.root.key, key);
+        var _compare = compare_1.compare(key, node.key);
         if (_compare < 0)
             node.left = this.removeInNodeAtKey(node.left, key);
         else if (_compare > 0)
@@ -166,12 +194,14 @@ var BinSearchTree = (function () {
     BinSearchTree.prototype.getMinNodeFrom = function (node) {
         if (node.left === null)
             return node;
-        return this.getMinNodeFrom(node.left);
+        else
+            return this.getMinNodeFrom(node.left);
     };
     BinSearchTree.prototype.getMaxNodeFrom = function (node) {
         if (node.right === null)
             return node;
-        return this.getMinNodeFrom(node.right);
+        else
+            return this.getMaxNodeFrom(node.right);
     };
     BinSearchTree.prototype.removeMinNodeFrom = function (node) {
         if (node.left === null)
@@ -188,9 +218,9 @@ var BinSearchTree = (function () {
         return node;
     };
     BinSearchTree.prototype.floorFromNodeToKey = function (node, key) {
-        if (node === null)
+        if (node === null || node === undefined)
             return null;
-        var _compare = compare_1.compare(node.key, key);
+        var _compare = compare_1.compare(key, node.key);
         if (_compare === 0)
             return node;
         if (_compare < 0)
@@ -201,9 +231,9 @@ var BinSearchTree = (function () {
         return node;
     };
     BinSearchTree.prototype.ceilFromNodeToKey = function (node, key) {
-        if (node === null)
+        if (node === null || node === undefined)
             return null;
-        var _compare = compare_1.compare(node.key, key);
+        var _compare = compare_1.compare(key, node.key);
         if (_compare === 0)
             return node;
         if (_compare > 0)
@@ -214,9 +244,9 @@ var BinSearchTree = (function () {
         return node;
     };
     BinSearchTree.prototype.rankOfKeyFromNode = function (key, node) {
-        if (node === null)
+        if (node === null || node === undefined)
             return 0;
-        var _compare = compare_1.compare(node.key, key);
+        var _compare = compare_1.compare(key, node.key);
         if (_compare < 0)
             return this.rankOfKeyFromNode(key, node.left);
         if (_compare > 0)
@@ -225,7 +255,7 @@ var BinSearchTree = (function () {
             return this.sizeOfNode(node.left);
     };
     BinSearchTree.prototype.nodeAtRankFromNode = function (rank, node) {
-        if (node === null)
+        if (node === null || node === undefined)
             return null;
         var leftSize = this.sizeOfNode(node.left);
         if (leftSize < rank)
@@ -235,16 +265,16 @@ var BinSearchTree = (function () {
         return node;
     };
     BinSearchTree.prototype.getKeysInRange = function (from, to) {
-        if (from === null)
+        if (from === null || from === undefined)
             throw new Error("first argument to getKeysInRange() is null");
-        if (to === null)
+        if (to === null || to === undefined)
             throw new Error("second argument to getKeysInRange() is null");
         var queue = new queue_1.Queue();
         this.addKeysToQueue(this.root, queue, from, to);
         return queue.iterator().list();
     };
     BinSearchTree.prototype.addKeysToQueue = function (node, queue, lo, hi) {
-        if (node === null)
+        if (node === null || node === undefined)
             return;
         var _comparelo = compare_1.compare(lo, node.key);
         var _comparehi = compare_1.compare(hi, node.key);
@@ -256,16 +286,16 @@ var BinSearchTree = (function () {
             this.addKeysToQueue(node.right, queue, lo, hi);
     };
     BinSearchTree.prototype.getNodesInRange = function (from, to) {
-        if (from === null)
+        if (from === null || from === undefined)
             throw new Error("first argument to getNodesInRange() is null");
-        if (to === null)
+        if (to === null || to === undefined)
             throw new Error("second argument to getNodesInRange() is null");
         var queue = new queue_1.Queue();
         this.addNodesToQueue(this.root, queue, from, to);
         return queue.iterator();
     };
     BinSearchTree.prototype.addNodesToQueue = function (node, queue, lo, hi) {
-        if (node === null)
+        if (node === null || node === undefined)
             return;
         var _comparelo = compare_1.compare(lo, node.key);
         var _comparehi = compare_1.compare(hi, node.key);
@@ -277,11 +307,10 @@ var BinSearchTree = (function () {
             this.addNodesToQueue(node.right, queue, lo, hi);
     };
     BinSearchTree.prototype.heightFromNode = function (node) {
-        if (node === null)
+        if (node === null || node === undefined)
             return -1;
         return 1 + Math.max(this.heightFromNode(node.left), this.heightFromNode(node.right));
     };
     return BinSearchTree;
 }());
 exports.BinSearchTree = BinSearchTree;
-//# sourceMappingURL=binSearchTree.js.map

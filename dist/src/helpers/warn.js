@@ -34,4 +34,3 @@ var Warn = (function () {
     return Warn;
 }());
 exports["default"] = Warn;
-//# sourceMappingURL=warn.js.map

@@ -56,4 +56,3 @@ function getInversions(array, aux, lo, mid, hi) {
     return inversions;
 }
 exports.getInversions = getInversions;
-//# sourceMappingURL=mergeSortHelper.js.map

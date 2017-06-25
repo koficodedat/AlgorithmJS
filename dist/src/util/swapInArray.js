@@ -14,4 +14,3 @@ function swapInArray(firstIndex, secondIndex, array) {
     temp = null;
 }
 exports.swapInArray = swapInArray;
-//# sourceMappingURL=swapInArray.js.map

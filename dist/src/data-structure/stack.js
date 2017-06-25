@@ -55,4 +55,3 @@ var Stack = (function (_super) {
     return Stack;
 }(bag_1.Bag));
 exports.Stack = Stack;
-//# sourceMappingURL=stack.js.map

@@ -9,7 +9,7 @@ import {UniIteratorImpl} from "../util/iterator";
      isEmpty()
      size()
      contains(..)
-     get()
+     get(..)
      put(..)
      remove(..)
      removeMin()

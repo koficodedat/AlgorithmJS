@@ -19,4 +19,3 @@ function mergeSort(array) {
     return [undefined];
 }
 exports.mergeSort = mergeSort;
-//# sourceMappingURL=mergeSort.js.map

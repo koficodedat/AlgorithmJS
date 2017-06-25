@@ -21,4 +21,3 @@ var Utility;
     Utility._swapInArray = swapInArray_1.swapInArray;
     Utility._uniform = uniform_1.uniform;
 })(Utility = exports.Utility || (exports.Utility = {}));
-//# sourceMappingURL=utility-exports.js.map

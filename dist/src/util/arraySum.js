@@ -14,4 +14,3 @@ function arraySum(array) {
     return sum;
 }
 exports.arraySum = arraySum;
-//# sourceMappingURL=arraySum.js.map

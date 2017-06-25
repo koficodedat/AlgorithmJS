@@ -26,4 +26,3 @@ function insertionSort(array) {
     return [undefined];
 }
 exports.insertionSort = insertionSort;
-//# sourceMappingURL=insertionSort.js.map

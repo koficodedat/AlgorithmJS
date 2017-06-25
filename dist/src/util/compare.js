@@ -17,4 +17,3 @@ function compare(first, second) {
     return 0;
 }
 exports.compare = compare;
-//# sourceMappingURL=compare.js.map

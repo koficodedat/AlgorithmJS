@@ -41,4 +41,3 @@ var datastructure = require("./exports/data-structure-exports");
         BSearchTree: datastructure.DataStructure._binSearchTree
     };
 }));
-//# sourceMappingURL=el.js.map

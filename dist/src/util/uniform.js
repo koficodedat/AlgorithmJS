@@ -17,4 +17,3 @@ function uniform(from, to) {
     return from + (Math.random() * (to - from));
 }
 exports.uniform = uniform;
-//# sourceMappingURL=uniform.js.map
