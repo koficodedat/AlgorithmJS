@@ -25,7 +25,7 @@
 #### Contribution
 >   Any one that wants to help with anything 
     from expanding the scope of features to documentation 
-    should contact me via [email](koficodedat@gmail.com) or seek a request via the [issue](https://github.com/koficodedat/el-gorithm/issues) feature on github.
+    should seek a request via the [issue](https://github.com/koficodedat/el-gorithm/issues) feature on github.
     
 #### Issues
     Please report issues as you see them during usage. It will help improve this library as a whole.
