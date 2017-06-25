@@ -2,7 +2,7 @@
     A Javascript Library for Data Manipulation.
     This library is exported as a UMD module.
 
-[NPM](https://www.npmjs.com/package/el-gorithm) | [Demo](https://www.npmjs.com/package/el-gorithm)
+[NPM](https://www.npmjs.com/package/el-gorithm) | [Demo](https://npm.runkit.com/el-gorithm)
 
 #### Quick Setup and Usage
     npm i -g el-gorithm (globally)
