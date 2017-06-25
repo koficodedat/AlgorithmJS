@@ -22,5 +22,14 @@
 #### Version
     1.0.17
     
+#### Contribution
+    Any one that wants to help with anything 
+    from expanding the scope of features to documentation 
+    should contact me at koficodedat@gmail.com or seek a request via the issue feature on github.
+    
+#### Issues
+    Please report issues as you see them during usage. It will help improve this library as a whole.
+    Thank you.
+    
 #### Credits
 -   Algorithms 4th Edition by Robert Sedgewick and Kevin Wayne.
