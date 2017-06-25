@@ -2,7 +2,7 @@
   "name": "el-gorithm",
   "version": "1.0.20",
   "description": "Javascript library for data manipulation",
-  "main": "lib/src/el.js",
+  "main": "./lib/src/el.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
