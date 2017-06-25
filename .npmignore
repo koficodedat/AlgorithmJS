@@ -1,4 +1,4 @@
-/exports
-/src
+/exports/*.ts
+/src/**/*.ts
 
-/el.*
+el.ts

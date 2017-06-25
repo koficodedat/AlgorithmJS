@@ -2,7 +2,7 @@
   "name": "el-gorithm",
   "version": "1.0.21",
   "description": "Javascript library for data manipulation",
-  "main": "./lib/src/el.js",
+  "main": "el.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,12 +16,6 @@
   "bugs": {
     "url": "https://github.com/koficodedat/el-gorithm/issues",
     "email": "koficodedat@hmail.com"
-  },
-  "directories": {
-    "bin": "./bin",
-    "doc": "./doc",
-    "lib": "./lib",
-    "man": "./man"
   },
   "author": "Kofi Nedjoh",
   "license": "MIT"
