@@ -1,8 +1,8 @@
 {
   "name": "el-gorithm",
   "version": "1.0.19",
-  "description": "Library for algorithms used to manipulate data",
-  "main": "el.js",
+  "description": "Javascript library for data manipulation",
+  "main": "lib/src/el.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +12,17 @@
     "manipulation",
     "mathematics"
   ],
+  "homepage": "https://github.com/koficodedat/el-gorithm",
+  "bugs": {
+    "url": "https://github.com/koficodedat/el-gorithm/issues",
+    "email": "koficodedat@hmail.com"
+  },
+  "directories": {
+    "bin": "./bin",
+    "doc": "./doc",
+    "lib": "./lib",
+    "man": "./man"
+  },
   "author": "Kofi Nedjoh",
   "license": "MIT"
 }

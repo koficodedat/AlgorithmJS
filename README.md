@@ -15,9 +15,9 @@
     var sortedList = el.mergeSort([3,5,2,6,4]); // [2,3,4,5,6]
     
 #### API
--   [Utility](https://github.com/koficodedat/el-gorithm/blob/develop/dist/docs/utility.md)
--   [Sort](https://github.com/koficodedat/el-gorithm/blob/develop/dist/docs/sort.md)
--   [Data Structure](https://github.com/koficodedat/el-gorithm/blob/develop/dist/docs/data-structure.md)
+-   [Utility](./doc/utility.md)
+-   [Sort](./doc/sort.md)
+-   [Data Structure](./doc/data-structure.md)
 
     
 #### Version
