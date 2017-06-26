@@ -83,6 +83,12 @@ _Vector_
         - unit(): Vector
             
 _Binary Search Tree_
+
+    Note:
+        All operations take O(logn) on average and O(n) at worst.
+        It takes a memory space of O(n)
+        
+        This data structure is a key/value pair structure. Keys are either numbers or string and values can be any object.
     
     Instantiation:
         var bst = new el.BSearchTree();
@@ -105,4 +111,19 @@ _Binary Search Tree_
         iterator(): UniIteratorImpl<TreeNode>{}
         keysInLevelOrder(): [ (number | string), ]. nb: return all keys in tree in a top down traversal
         height(): number
+        
+_Balanced Binary Search Tree_
+
+    Note:
+        This class implements a variation of the RED-BLACK (Self Balancing) Binary Search Tree.
+        It is a left leaning binary tree; the height of the left side is always at most more than the right side.
+        All operations take O(logn) all the time.
+        It takes a memory space of O(n).
+        
+        This data structure is a key/value pair structure. Keys are either numbers or string and values can be any object.
+        
+    Instantiation:
+        var bbst = new el.BBSearchTree();
+    Fuctions:
+        Implements all functions in the default Binary Search Tree.
         

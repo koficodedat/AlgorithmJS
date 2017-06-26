@@ -26,7 +26,7 @@
    - [Data Structure](https://npm.runkit.com/el-gorithm/doc/data-structure.md)
     
 #### Version
->    1.0.23
+>    1.0.24
     
 #### Contribution
 >   Any one that wants to help with anything 
