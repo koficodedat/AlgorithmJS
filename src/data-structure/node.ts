@@ -16,3 +16,7 @@ export interface TreeNode<V>{
     right: TreeNode<V>;
     size: number;
 }
+
+export interface BalancedTreeNode<V> extends TreeNode<V>{
+    color: boolean;
+}

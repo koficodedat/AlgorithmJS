@@ -45,7 +45,8 @@ import * as datastructure from './exports/data-structure-exports';
         Queue:          datastructure.DataStructure._queue,
         Stack:          datastructure.DataStructure._stack,
         Vector:         datastructure.DataStructure._vector,
-        BSearchTree:    datastructure.DataStructure._binSearchTree
+        BSearchTree:    datastructure.DataStructure._binSearchTree,
+        BBSearchTree:   datastructure.DataStructure._balBinSearchTree
 
 
     };
