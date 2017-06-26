@@ -1,6 +1,6 @@
 {
   "name": "el-gorithm",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "Javascript library for data manipulation",
   "main": "el.js",
   "scripts": {
