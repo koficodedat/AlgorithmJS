@@ -13,6 +13,34 @@
     ...
     
     var sortedList = el.mergeSort([3,5,2,6,4]); // [2,3,4,5,6]
+    
+#### Version
+>    1.0.25
+
+#### New in Version 1.0.25
+_Utility_
+- _arrayMax([ number, ], before?): boolean_.
+- _arrayMin([ number, ], before?): boolean_.
+- _arrayProduct([ number, ], before?): boolean_.
+- _round(number, precision?): boolean_.
+- _isNeutral(number): boolean_.
+- _isPositive(number): boolean_.
+- _isNegative(number): boolean_.
+
+_Data Structure_
+- _Vector_
+    - set([ number, ], shouldReturn?): void | Vector.
+    - put(index, value): void
+    - @static zeros(number): Vector.
+    - @static ones(number): Vector.
+    - @static setWithSingleValue(number, dimension): Vector.
+    - @static gen(from, to, by?): Vector.
+    - _**__Some functions were removed. Check under Data Structure API README___
+- _Matrix_
+    - Check under Data Structure API README
+- _Dictionary_
+    - Check under Data Structure API README
+
 
 #### API
 - _API Walkthrough on Github_
@@ -25,12 +53,9 @@
    - [Sort](https://npm.runkit.com/el-gorithm/doc/sort.md)
    - [Data Structure](https://npm.runkit.com/el-gorithm/doc/data-structure.md)
     
-#### Version
->    1.0.24
-    
 #### Contribution
 >   Any one that wants to help with anything 
-    from expanding the scope of features to documentation 
+    from testing, expanding the scope of features to documentation 
     should seek a request via the [issue](https://github.com/koficodedat/el-gorithm/issues) feature on Github.
     
 #### Issues

@@ -16,12 +16,18 @@
 
     added vector functions:
         vec()
-        initVec(..)
-        initVecWithArray(..)
-        zeroVec(..)
+        set(..) changed from set(..) @since 1.0.25
+        put(..) @since 1.0.25
         isSameLength(..)
+
+        static functions:
+            ones(..) @since 1.0.25
+            setWithSingleValue(..) @since 1.0.25
+            gen(..) @since 1.0.25
+            zeros(..) @since 1.0.25
  */
 
+import {round} from "../util/round";
 interface Vector {
     dimension: number;
     data: number[];
@@ -31,31 +37,32 @@ export class VectorImpl{
 
     private vector: Vector = { dimension: 0, data: [] };
 
-    constructor(){};
+    constructor();
+    constructor(values: number[]);
+    constructor(arg?){
+
+        if( arguments.length === 0 ){
+            this.empty(true);
+        }
+        else if( arguments.length === 1 ){
+
+            if( !(arg instanceof Array) ) throw new TypeError("Third argument is of wrong type. Needs an Array");
+
+            this.set( arg, true );
+        }
+        else{
+            throw new TypeError("Unexpected arguments in Matrix constructor");
+        }
+
+    }
 
     vec(): Vector{
         return this.vector;
     }
 
-    initVec(...values: number[]): VectorImpl{
+    set(values: number[], shouldNotReturn?: boolean ){
         this.vector = { dimension: values.length, data: values };
-        return this;
-    }
-
-    initVecWithArray(values: number[]): VectorImpl{
-        this.vector = { dimension: values.length, data: values };
-        return this;
-    }
-
-    zeroVec(dimension: number): VectorImpl{
-
-        this.vector = { dimension: dimension, data: [] };
-
-        for( let i = 0; i < dimension; i++ ){
-            this.vector.data[i] = 0;
-        }
-
-        return this;
+        if( !shouldNotReturn ) return this;
     }
 
     dot(vector: VectorImpl): number{
@@ -97,6 +104,11 @@ export class VectorImpl{
         return newVector;
     }
 
+    put(index: number, value: number){
+        if( index < 0 || index > this.vector.dimension  ) throw new Error('Illegal index');
+        this.vector.data[index] = value;
+    }
+
     magnitude(): number{
         return Math.sqrt( this.dot(this) );
     }
@@ -115,7 +127,7 @@ export class VectorImpl{
         newVector.vector.dimension = this.vector.dimension;
 
         for( let i = 0; i < this.vector.dimension; i++ ){
-            newVector.vector.data[i] = scalar * this.vector.data[i];
+            newVector.vector.data[i] = round(scalar * this.vector.data[i] ,5);
         }
 
         return newVector;
@@ -137,7 +149,7 @@ export class VectorImpl{
 
         if( x instanceof Array && x[0] instanceof VectorImpl ){
 
-            if( x.length < 1 ) throw new Error('Need at least one vectors to check for length equivalency');
+            if( x.length < 1 ) throw new Error('Need at least one vector to check for length equivalency');
 
             for( let i = 0; i < x.length; i++ ){
                 if( this.vector.dimension !== x[i].vector.dimension ) return false;
@@ -146,6 +158,56 @@ export class VectorImpl{
             return true;
         }
 
+    }
+
+
+    //statics
+    static setWithSingleValue(dimension: number, value: number): VectorImpl{
+        let data: number[] = [];
+
+        for( let i = 0; i < dimension; i++ ){
+            data[i] = value;
+        }
+
+        return new VectorImpl(data);
+    }
+
+    static zeros(dimension: number): VectorImpl{
+        return VectorImpl.setWithSingleValue(dimension,0);
+    }
+
+    static ones(dimension: number): VectorImpl{
+        return VectorImpl.setWithSingleValue(dimension,1);
+    }
+
+    static gen(from: number, to: number, by?: number): VectorImpl{
+        let data: number[] = [];
+        let currentValue: number = from;
+        let index = 0;
+
+        const decimalPart = by ? by.toString().split('.')[1] : '';
+        const precision = by !== null && by !== undefined ? ( decimalPart ? decimalPart.length : 1 ) : 0;
+
+        while( currentValue < to ){
+
+            let value = index === 0 ? round(currentValue, 0) :
+                ( precision !== 0 ? round(currentValue += by, precision) : round(currentValue += 1, precision) );
+
+            if( value > to ) break;
+
+            data[index] = value;
+
+            index++;
+        }
+
+        return new VectorImpl(data);
+    }
+
+
+    //privates
+    private empty( shouldNotReturn?: boolean ){
+        this.vector = { dimension: 0, data: [] };
+        if( !shouldNotReturn ) return this;
     }
 
 }
