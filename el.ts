@@ -15,19 +15,25 @@ import * as datastructure from './exports/data-structure-exports';
 }(this, function () {
     return {
 
-
         //Functions:
 
         //utilities
         arraySum:       utility.Utility._arraySum,
+        arrayMin:       utility.Utility._arrayMin,
+        arrayMax:       utility.Utility._arrayMax,
+        arrayProduct:   utility.Utility._arrayProduct,
         average:        utility.Utility._average,
         compare:        utility.Utility._compare,
         inversions:     utility.Utility._inversions,
         isSorted:       utility.Utility._isSorted,
+        isNeutral:      utility.Utility._isNeutral,
+        isPositive:     utility.Utility._isPositive,
+        isNegative:     utility.Utility._isNegative,
         shuffle:        utility.Utility._knuthShuffle,
         randSeq:        utility.Utility._randSeq,
         swapInArray:    utility.Utility._swapInArray,
         uniform:        utility.Utility._uniform,
+        round:          utility.Utility._round,
 
         //sorts
         binarySort:     sort.Sort._binarySort,
@@ -37,17 +43,17 @@ import * as datastructure from './exports/data-structure-exports';
         shellSort:      sort.Sort._shellSort,
 
 
-
         //Class:
 
-        //data Structure:
+        //data structure:
         Bag:            datastructure.DataStructure._bag,
         Queue:          datastructure.DataStructure._queue,
         Stack:          datastructure.DataStructure._stack,
         Vector:         datastructure.DataStructure._vector,
         BSearchTree:    datastructure.DataStructure._binSearchTree,
-        BBSearchTree:   datastructure.DataStructure._balBinSearchTree
-
+        BBSearchTree:   datastructure.DataStructure._balBinSearchTree,
+        Matrix:         datastructure.DataStructure._matrix,
+        Dictionary:     datastructure.DataStructure._dictionary
 
     };
 }));
