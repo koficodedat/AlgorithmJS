@@ -7,28 +7,37 @@
  @return: { number } - returns a number
  */
 import {Dictionary} from "../data-structure/dictionary";
-export function arrayMax<T>(data: number[], before?: number): Dictionary<number>{
-    let max: Dictionary<number> = null;
-    data.forEach(
-        ( value, index ) => {
-            if( before !== undefined ){
-                if( max ){
-                    if( value < before && max.value > value ) max = { key: index, value: value }
-                }
-                else{
-                    if( value < before ) max = { key: index, value: value }
-                }
-            }
-            else{
-                if( max ){
-                    if( max.value < value ) max = { key: index, value: value }
-                }
-                else{
-                    max = { key: index, value: value }
-                }
-            }
-        }
-    );
+import {isSorted} from "./isSorted";
+import {hasSameType} from "./hasSameType";
+export function arrayMax<T>(data: (number | string)[], before?: number): Dictionary<number>{
 
-    return max;
+    if( data instanceof Array && hasSameType(data) ) {
+        let max: Dictionary<number> = null;
+
+        if( isSorted(data) && before === undefined ) return { key: data.indexOf(data[data.length - 1]), value: data[data.length - 1] };
+        data.forEach(
+            ( value, index ) => {
+                if( before !== undefined ){
+                    if( max ){
+                        if( value < before && max.value > value ) max = { key: index, value: value }
+                    }
+                    else{
+                        if( value < before ) max = { key: index, value: value }
+                    }
+                }
+                else{
+                    if( max ){
+                        if( max.value < value ) max = { key: index, value: value }
+                    }
+                    else{
+                        max = { key: index, value: value }
+                    }
+                }
+            }
+        );
+
+        return max;
+    }
+
+    return undefined;
 }

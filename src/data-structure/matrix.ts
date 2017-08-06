@@ -26,6 +26,7 @@ import {arraySum} from "../util/arraySum";
 
      added vector functions:
          mat(..)
+         createEmpty()
          set(..)
          row(..)
          col(..)
@@ -65,7 +66,7 @@ export class MatrixImpl{
     constructor(arg1?, arg2?, arg3?){
 
         if( arguments.length === 0 ){
-            this.isEmpty(true);
+            this.createEmpty();
         }
         else if( arguments.length !== 0 ){
 
@@ -75,7 +76,7 @@ export class MatrixImpl{
                 if( typeof arg2 !== 'number' ) throw new TypeError("Second argument is of wrong type. Needs a number");
                 if( !(arg3 instanceof Array) ) throw new TypeError("Third argument is of wrong type. Needs an Array or Rest Parameter");
 
-                this.set( Math.floor(arg1), Math.floor(arg2), arg3, true );
+                this.set( Math.floor(arg1), Math.floor(arg2), arg3);
 
             }
             else{
@@ -90,10 +91,10 @@ export class MatrixImpl{
         return this.matrix;
     }
 
-    set(rowLength: number, columnLength: number, data: number[], shouldNotReturn?: boolean ): MatrixImpl | void{
+    set(rowLength: number, columnLength: number, data: number[] ): MatrixImpl{
         if( rowLength * columnLength !== data.length ) throw new Error(`init(..) - Vertical dimensions mismatch: ( 1x${ columnLength } vs 1x${ data.length % columnLength } )`);
-        this.matrix = { rowLength: rowLength, columnLength: columnLength, data: data }
-        if( !shouldNotReturn ) return this;
+        this.matrix = { rowLength: rowLength, columnLength: columnLength, data: data };
+       return this;
     }
 
     // (row - 1) * (col dim)
@@ -381,9 +382,13 @@ export class MatrixImpl{
         return true;
     }
 
-    isEmpty(shouldNotReturn?: boolean): MatrixImpl | void{
+    isEmpty(): boolean{
+        return this.mat().data.length === 0;
+    }
+
+    createEmpty(): MatrixImpl{
         this.matrix = { rowLength: 0, columnLength: 0, data: [] };
-        if( !shouldNotReturn ) return this;
+        return this;
     }
 
 
@@ -434,10 +439,10 @@ export class MatrixImpl{
         return new MatrixImpl(rowLength, columnLength, data);
     }
 
-    static inv(matrix: MatrixImpl): string | MatrixImpl{
+    static inv(matrix: MatrixImpl): MatrixImpl{
 
         if( !matrix.isSquare() ) throw new Error('inv() - Argument must be a square matrix');
-        if( !matrix.isReversible() ) return 'Matrix is irreversible';
+        if( !matrix.isReversible() ) throw new Error('inv() - Matrix is irreversible');
 
         if( matrix.matrix.rowLength === 2 ){
             matrix = MatrixImpl.inverseHelper(matrix);

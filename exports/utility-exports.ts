@@ -14,6 +14,14 @@ import {round} from "../src/util/round";
 import {isNeutral} from "../src/util/isNeutral";
 import {isPositive} from "../src/util/isPositive";
 import {isNegative} from "../src/util/isNegative";
+import {clone} from "../src/util/clone";
+import {contains} from "../src/util/contains";
+import {hasSameType} from "../src/util/hasSameType";
+import {hasType} from "../src/util/hasType";
+import {isEmpty} from "../src/util/isEmpty";
+import {isEqual} from "../src/util/isEqual";
+import {isNothing} from "../src/util/isNothing";
+import {isPrimitive} from "../src/util/isPrimitive";
 
 export namespace Utility{
 
@@ -33,6 +41,14 @@ export namespace Utility{
     _swapInArray = swapInArray;
     _uniform = uniform;
     _round = round;
+    _clone = clone;
+    _contains = contains;
+    _hasSameType = hasSameType;
+    _hasType = hasType;
+    _isEmpty = isEmpty;
+    _isEqual = isEqual;
+    _isNothing = isNothing;
+    _isPrimitive = isPrimitive;
 
     export declare let _arraySum;
     export declare let _arrayMin;
@@ -50,4 +66,12 @@ export namespace Utility{
     export declare let _swapInArray;
     export declare let _uniform;
     export declare let _round;
+    export declare let _clone;
+    export declare let _contains;
+    export declare let _hasSameType;
+    export declare let _hasType;
+    export declare let _isEmpty;
+    export declare let _isEqual;
+    export declare let _isNothing;
+    export declare let _isPrimitive;
 }

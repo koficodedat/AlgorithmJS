@@ -1,10 +1,10 @@
 {
   "name": "el-gorithm",
-  "version": "1.0.25",
+  "version": "1.0.27",
   "description": "Javascript library for data manipulation",
   "main": "el.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
   "keywords": [
     "algorithm",
@@ -18,5 +18,11 @@
     "email": "koficodedat@hmail.com"
   },
   "author": "Kofi Nedjoh",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "3.9.1",
+    "gulp-mocha": "4.3.1",
+    "mocha": "3.5.0",
+    "ts-node": "3.3.0"
+  }
 }

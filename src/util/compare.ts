@@ -6,7 +6,9 @@
  @return: { number } - returns a -1 for less, 0 for equality and 1 more
  */
 
-export function compare<T>(first: T, second: T) : number {
+export function compare(first: number | string, second: number | string) : number {
+
+    if( first === null || second === null) return undefined;
 
     if( first !== null && second !== null ){
         if( first > second ) return 1;

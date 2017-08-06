@@ -6,6 +6,6 @@
  @return: { boolean } - returns a boolean
  */
 
-export function isNegative(number: number){
-    return number > 0;
+export function isNegative(number: number): boolean{
+    return number < 0;
 }

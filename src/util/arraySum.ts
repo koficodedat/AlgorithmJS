@@ -8,6 +8,7 @@
 export function arraySum(array: number[]): number{
     return array.reduce(
         (sum, value) => {
+            if(typeof value !== 'number') return undefined;
             return sum + value;
         }
     )

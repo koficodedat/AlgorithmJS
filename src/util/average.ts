@@ -8,6 +8,8 @@ import { arraySum }  from './arraySum';
  */
 
 export function average(array: number[]): number{
+    let sum = arraySum(array);
+    if(sum === undefined) return undefined;
     return arraySum(array) / array.length;
 
 }

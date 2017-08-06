@@ -42,16 +42,16 @@ export class VectorImpl{
     constructor(arg?){
 
         if( arguments.length === 0 ){
-            this.empty(true);
+            this.createEmpty();
         }
         else if( arguments.length === 1 ){
 
-            if( !(arg instanceof Array) ) throw new TypeError("Third argument is of wrong type. Needs an Array");
+            if( !(arg instanceof Array) ) throw new TypeError("third argument is of wrong type. Needs an Array");
 
-            this.set( arg, true );
+            this.set( arg );
         }
         else{
-            throw new TypeError("Unexpected arguments in Matrix constructor");
+            throw new TypeError("unexpected arguments in Matrix constructor");
         }
 
     }
@@ -60,14 +60,14 @@ export class VectorImpl{
         return this.vector;
     }
 
-    set(values: number[], shouldNotReturn?: boolean ){
+    set(values: number[]): VectorImpl{
         this.vector = { dimension: values.length, data: values };
-        if( !shouldNotReturn ) return this;
+        return this;
     }
 
     dot(vector: VectorImpl): number{
 
-        if( !this.isSameLength([this,vector]) ) throw new Error('Vectors must be of the same length');
+        if( !this.isSameLength([this,vector]) ) throw new Error('vectors must be of the same length');
 
         let sum: number = 0;
 
@@ -80,9 +80,11 @@ export class VectorImpl{
 
     plus(vector: VectorImpl): VectorImpl{
 
-        if( !this.isSameLength([this,vector])) throw new Error('Vectors must be of the same length');
+        if( !this.isSameLength([this,vector])) throw new Error('vectors must be of the same length');
 
         let newVector: VectorImpl = new VectorImpl();
+
+        newVector.vector.dimension = this.vector.dimension;
 
         for( let i = 0; i < this.vector.dimension; i++ ){
             newVector.vector.data[i] = this.vector.data[i] + vector.vector.data[i];
@@ -93,9 +95,11 @@ export class VectorImpl{
 
     minus(vector: VectorImpl): VectorImpl{
 
-        if( !this.isSameLength([this,vector])) throw new Error('Vectors must be of the same length');
+        if( !this.isSameLength([this,vector])) throw new Error('vectors must be of the same length');
 
         let newVector: VectorImpl = new VectorImpl();
+
+        newVector.vector.dimension = this.vector.dimension;
 
         for( let i = 0; i < this.vector.dimension; i++ ){
             newVector.vector.data[i] = this.vector.data[i] - vector.vector.data[i];
@@ -105,7 +109,7 @@ export class VectorImpl{
     }
 
     put(index: number, value: number){
-        if( index < 0 || index > this.vector.dimension  ) throw new Error('Illegal index');
+        if( index < 0 || index > this.vector.dimension  ) throw new Error('illegal index');
         this.vector.data[index] = value;
     }
 
@@ -114,7 +118,7 @@ export class VectorImpl{
     }
 
     distance(vector: VectorImpl): number{
-        if( !this.isSameLength([this,vector])) throw new Error('Vectors must be of the same length');
+        if( !this.isSameLength([this,vector])) throw new Error('vectors must be of the same length');
         return  this.minus(vector).magnitude();
     }
 
@@ -134,7 +138,7 @@ export class VectorImpl{
     }
 
     unit(): VectorImpl{
-        if( this.magnitude() === 0 ) throw new Error('Zero-vector has no direction');
+        if( this.magnitude() === 0 ) throw new Error('zero-vector has no direction');
         return this.scale( 1.0 / this.magnitude() );
     }
 
@@ -149,7 +153,7 @@ export class VectorImpl{
 
         if( x instanceof Array && x[0] instanceof VectorImpl ){
 
-            if( x.length < 1 ) throw new Error('Need at least one vector to check for length equivalency');
+            if( x.length < 1 ) throw new Error('need at least one vector to check for length equivalency');
 
             for( let i = 0; i < x.length; i++ ){
                 if( this.vector.dimension !== x[i].vector.dimension ) return false;
@@ -205,9 +209,8 @@ export class VectorImpl{
 
 
     //privates
-    private empty( shouldNotReturn?: boolean ){
+    private createEmpty(){
         this.vector = { dimension: 0, data: [] };
-        if( !shouldNotReturn ) return this;
     }
 
 }
