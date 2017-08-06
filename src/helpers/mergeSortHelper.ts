@@ -1,6 +1,6 @@
 import { compare } from '../util/compare';
 
-export function sort<T>(array: T[],aux: T[], lo: number, hi: number){
+export function sort<T>(array: (number | string)[],aux: (number | string)[], lo: number, hi: number){
 
     if( hi <= lo ) return;
 
@@ -10,7 +10,7 @@ export function sort<T>(array: T[],aux: T[], lo: number, hi: number){
     merge( array, aux, lo, mid, hi)
 }
 
-export function merge<T>(array: T[], aux: T[], lo: number, mid: number, hi: number){
+export function merge<T>(array: (number | string)[], aux: (number | string)[], lo: number, mid: number, hi: number){
 
     if( array instanceof Array ) { //TODO: implement a function to check if all values of the list are of the same type
 
@@ -33,7 +33,7 @@ export function merge<T>(array: T[], aux: T[], lo: number, mid: number, hi: numb
 
 }
 
-export function getInversions<T>(array: T[], aux: T[], lo: number, mid: number, hi: number): number{
+export function getInversions<T>(array: (number | string)[], aux: (number | string)[], lo: number, mid: number, hi: number): number{
 
     let inversions: number = 0;
 

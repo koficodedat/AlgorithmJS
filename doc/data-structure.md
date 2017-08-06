@@ -5,7 +5,7 @@
     All class instantiations extend from root: el.
     
 #### Class
-    All but the Vector data structure defined below implement 
+    All but the Vector, Matrix and Dictionary data structure defined below implement 
     the Unidirectional Iterator.
     The Iterator implements the following functions:
         - hasNext() : boolean
@@ -59,7 +59,7 @@ _Vector_
         - zeroVec(number): void @since 1.0.25
     
         Added Functions:
-        - set([ number, ], shouldReturn?): void | Vector. formerly initVecWithArray(..). initialize a vector with an Array parameter and an optional return parameter.
+        - set([ number, ]): Vector. formerly initVecWithArray(..). initialize a vector with an Array parameter.
         - vec(): Vector returns the Vector
         - put(index, value): void
         - isSameLength( Vector | Vector[] ): void. checks to see if the Vectors parameters have the same length as the current vector
@@ -120,21 +120,6 @@ _Binary Search Tree_
         keysInLevelOrder(): [ (number | string), ]. nb: return all keys in tree in a top down traversal
         height(): number
         
-_Balanced Binary Search Tree_
-
-    Note:
-        This class implements a variation of the RED-BLACK (Self Balancing) Binary Search Tree.
-        It is a left leaning binary tree; the height of the left side is always at most more than the right side.
-        All operations take O(logn) all the time.
-        It takes a memory space of O(n).
-        
-        This data structure is a key/value pair structure. Keys are either numbers or string and values can be any object.
-        
-    Instantiation:
-        var bbst = new el.BBSearchTree();
-    Fuctions:
-        Implements all functions in the default Binary Search Tree.
-        
 _Matrix_
     
     Instantiation:
@@ -144,10 +129,11 @@ _Matrix_
     
         Added Functions:
         - mat(): Matrix. returns the Matrix
-        - set( rowDim, colDim, [ number, ], shouldReturn? ): void | Matrix. initialize a rowDim x colDim matrix with array values provided and an optional return parameter.
+        - createEmpty(): Matrix. initialize a 0 x 0 empty matrix
+        - set( rowDim, colDim, [ number, ]): Matrix. initialize a rowDim x colDim matrix with array values provided.
         - row( number ): Vector. returns a row vector of the row number passed.
         - col( number ): Vector. returns a column vector of the row number passed.
-        - val(row, col  ): Matrix. returns the value situated at the row x col index in the current matrix.
+        - val(row, col  ): number. returns the value situated at the row x col index in the current matrix.
         - seek( row, col ): boolean. 'seeks' for the existence of a value a particular row x column combination in the current matrix.
         - diag( row, col  ): Vector. returns a left to right diagonal vector from the row number passed in of teh current matrix.
         - antiDiag(row, col ): Vector. returns a right to left diagonal vector from the row number passed in of teh current matrix.
@@ -163,7 +149,8 @@ _Matrix_
         - @static ones( row, col ): Matrix. returns a row x col matrix with all values being 1.
         - @static randBi( row, col ): Matrix. returns a row x col matrix with all values between 0 and 1.
         - @static rand( row, col, upto ): Matrix. returns a row x col matrix with uniform values between 0 and the optional upto. upto is 1 by defualt.
-        - @static ident( row, col ): Matrix. returns a row x col identity matrix.
+        - @static ident( row, col ): Matrix. returns a row x col (sometimes pseudo) identity matrix. it does not have to be a square matrix. 
+          the dimensions do not have to conform to a square matrix. however, it will fail the isIdentity check if the dimensions are not the same.
         - @static inv( Matrix ): Matrix. returns the inverse of a square matrix passed in. 
         
     Base Functions:

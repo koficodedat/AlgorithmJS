@@ -48,8 +48,8 @@ export class UniIteratorImpl<T> implements UniIterator<T>{
 
     constructor(node: UniNode<T>, size: number){
 
-        if( node === null ) throw Error('Node is null or undefined');
-        if( size === null || size < 0 ) throw Error('Node size is null or undefined');
+        if( node === null ) throw Error('node is null or undefined');
+        if( size === null || size < 0 ) throw Error('node size is null or undefined');
 
         else {
             this.current = <UniNode<T>> new Object(node);
@@ -60,16 +60,20 @@ export class UniIteratorImpl<T> implements UniIterator<T>{
         }
     }
 
-    next(value: T): T{
+    next(): T{
         let item: T = null;
         if( this.hasNext() ){
+            this.mayRemove = true;
             item = this.current.item;
+
             this.current = this.current.next;
             this.currentIndex += 1;
-        }else this.currentIndex =  -1;
 
-        this.mayRemove = true;
-        return item;
+            return item;
+        }else {
+            this.currentIndex = -1;
+            throw new Error('iterator underflow');
+        }
     }
 
     hasNext(): boolean{
@@ -79,9 +83,9 @@ export class UniIteratorImpl<T> implements UniIterator<T>{
     remove(): void{
 
         if( !this.mayRemove ){
-            throw Error('Need to call next() before remove()');
+            throw Error('need to call next() before remove()');
         }else if( this.currentIndex === -1 ){
-            throw Error('Nothing to iterate on hence nothing to remove');
+            throw Error('nothing to iterate on hence nothing to remove');
         }else if( this.currentIndex === 0 ){
             this.base = this.base.next;
         }

@@ -1,4 +1,6 @@
 import { getInversions } from '../helpers/mergeSortHelper'
+import {hasSameType} from "./hasSameType";
+import {contains} from "./contains";
 
 /*
  inversions(..)
@@ -7,21 +9,23 @@ import { getInversions } from '../helpers/mergeSortHelper'
  @return: { number } - returns a number
  */
 
-export function inversions<T>(array: T[]): number{
+export function inversions(array: (number | string)[]): number{
 
-    if( array instanceof Array ) { //TODO: implement a function to check if all values of the list are of the same type
+    if( array instanceof Array ) {
 
-        let duplicate: T[] = [];
-        let aux: T[] = [];
+        if( !hasSameType(array) || contains(array,null) ) return undefined;
+
+        let duplicate: (number | string)[] = [];
+        let aux: (number | string)[] = [];
 
         for( let i = 0; i < array.length; i++ ) duplicate.push(array[i]);
         return count( array, duplicate, aux, 0, array.length - 1 );
     }
 
-    return 0;
+    return undefined;
 }
 
-function count<T>(array: T[], duplicate: T[], aux: T[], lo: number, hi: number): number{
+function count<T>(array: (number | string)[], duplicate: (number | string)[], aux: (number | string)[], lo: number, hi: number): number{
 
     let inversions: number = 0;
 

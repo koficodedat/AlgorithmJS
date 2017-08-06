@@ -7,19 +7,19 @@
     
 ##### Functions
 - _arraySum([ number, ]): number_
-    > el.arraySum([1,2,3]) // 5
+    > el.arraySum([1,2,3]) // 6
 - _average([ number, ]): number_
     > el.average([1,2,3]) //2
 - _compare(T,T): number_. nb: T = number | string 
-    > el.compare([3,1]) //-1
+    > el.compare([3,1]) //1
 - _inversions([ number, ]): number_. nb: returns the number of swaps necessary for the list to be sorted
-    > el.inversions(['c','b','a']) //2
+    > el.inversions(['c','b','a']) //3
 - _isSorted([ T, ]): boolean_. nb: T = number | string 
     > el.isSorted([1,2,3]) //true
-- _shuffle([ T, ]): boolean_. nb: t1, t2 = number | string. returns a randomly shuffled list using knuth shuffle.
+- _shuffle([ T, ]): [ T, ]_. nb: t1, t2 = number | string. returns a randomly shuffled list using knuth shuffle.
     > el.shuffle(['c','b','a']) //[ 'b', 'a', 'c' ]
 - _randSeq([ howMany, from, to, shouldExcludeEnds ? ]): [ number, ]_. nb: shouldExcludeEnds defaults to false. returns an array of a sequence of randomly generated numbers based on how many is requested. 
-    > el.randSeq(5,2,5) // [ 1.4225897688487965, 2.363004834625378 ]
+    > el.randSeq(5,2,5) // [ 4.323407772822972, 4.86791198325756, 2.672361528233111, 3.668736433386714, 4.919291748362203 ]
 - _swapInArray(firstIndex, secondIndex, array): void_. 
     > el.swapInArray([ 3, 5, 7, 9 ]) //void
 - _uniform(from, to): number_.. nb: returns a uniformly generated random number between two numbers 
@@ -34,7 +34,15 @@
     > el.round(1.23456, 2) //1.23
 - _arrayProduct([ number, ]): boolean_.
     > el.arrayProduct([1,2,3]) //6
-- _arrayMin([ number, ], after?): boolean_. nb: get the minimum number in an array starting from after which is optional
-    > el.arrayMin([1,2,3], 1) //2
-- _arrayMax([ number, ], before?): boolean_. nb: get the maximum number in an array starting from before which is optional
-    > el.arrayMax([1,2,3], 2) //1
+- _arrayMin([ number, ], after?): boolean_. nb: get the first occurrence of the minimum index and number in an array starting from the optional _after_ clause.
+    > el.arrayMin([1,2,3], 1) //{ key: 0, value: 1 }
+- _arrayMax([ number, ], before?): boolean_. nb: get the first occurrence of the maximum index and number in an array starting after the optional _before_ clause.
+    > el.arrayMax([1,2,3], 2) //{ key: 2, value: 3 }
+- _clone( source: any ): any_. nb: returns a deep copy of the source object. does not clone primitive types from the head: number, string and boolean.
+    > el.clone([1,2]) //[1,2]
+- _contains( object: any, value: any): boolean_. nb: determines if an object of values contains a specific value. it only checks for the objects own properties
+    > el.contains([1,2], 2) //true
+- _isEqual( ...object: any ): boolean_. nb: determines the value by value deep equality of two or more objects. it only checks for the objects own properties
+    > el.isEqual([1,2],[1,2]) //true
+- _isEmpty( object: any ): boolean_. nb: determines if an object is empty
+    > el.isEmpty([]) //true

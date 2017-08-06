@@ -1,13 +1,14 @@
 import { compare } from '../util/compare';
 import { swapInArray } from '../util/swapInArray';
+import {hasSameType} from "../util/hasSameType";
 
 /*
  shellSort(..)
  returns a sorted array in ascending order with selection sort
  performs O(n2) in worst case and a running time of O(nlog(n)) on average
 
- @param: {  T[] { number[] | string[] } } array - takes an array of generic items
- @return: { number } T[] { number[] | string[] } - returns an array
+ @param: { (number | string)[] } array - takes an array of generic items
+ @return: { (number | string)[] } - returns an array
 
  has side effects
  */
@@ -24,8 +25,8 @@ import { swapInArray } from '../util/swapInArray';
  - has side effects (hse)
  */
 
-export function shellSort(array: any[]): any[]{
-    if( array instanceof Array ) { //TODO: implement a function to check if all values of the list are of the same type
+export function shellSort(array: (number | string)[]): (number | string)[]{
+    if( array instanceof Array && hasSameType(array) ) {
 
         let length: number = array.length;
         let incrementSequence: number = 1;

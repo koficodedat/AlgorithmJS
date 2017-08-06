@@ -1,4 +1,6 @@
 import { swapInArray } from './swapInArray';
+import { clone } from "./clone";
+import assert = require('assert');
 
 /*
  knuthShuffle(..)
@@ -7,16 +9,29 @@ import { swapInArray } from './swapInArray';
  @return: { T[] { number[] | string[] } } - returns an array
  */
 
-export function knuthShuffle<T>(array: T[]): T[]{
-    if( array instanceof Array ) { //TODO: implement a function to check if all values of the list are of the same type
+export function knuthShuffle<T>(array: T[], tries?: number): T[]{
 
-        for( let i = 0; i < array.length; i++ ){
+    if( array instanceof Array ) {
+
+        let shuffleArray: T[] = clone(array);
+
+        for( let i = 0; i < shuffleArray.length; i++ ){
             let r: number = Math.random() * (i + 1);
-            swapInArray(i, Math.floor(r), array);
+            swapInArray(i, Math.floor(r), shuffleArray);
         }
 
-        return array;
+        try{
+            assert.notDeepEqual(array,shuffleArray);
+        }catch (e){
+            let t = tries ? tries : 0;
+
+            if(t === 5) return undefined;
+
+            return knuthShuffle(array, ++t);
+        }
+
+        return shuffleArray;
     }
 
-    return [ undefined ];
+    return undefined;
 }

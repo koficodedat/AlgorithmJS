@@ -15,19 +15,20 @@
     var sortedList = el.mergeSort([3,5,2,6,4]); // [2,3,4,5,6]
     
 #### Version
->    1.0.25
+>    1.0.26
 
-#### New in Version 1.0.25
+#### New in Version 1.0.26
 _Utility_
-- _arrayMax([ number, ], before?): boolean_.
-- _arrayMin([ number, ], before?): boolean_.
-- _arrayProduct([ number, ], before?): boolean_.
-- _round(number, precision?): boolean_.
-- _isNeutral(number): boolean_.
-- _isPositive(number): boolean_.
-- _isNegative(number): boolean_.
+- _clone( source: any ): any_.
+- _contains( object: any, value: any): boolean_.
+- _isEqual( ...object: any ): boolean_.
+- _isEmpty( object: any ): boolean_.
 
 _Data Structure_
+
+- _BalanceBinarySerachTree_
+  - **__removed this data structure _for now_ to fix a fundamental bug found during testing.__
+    
 - _Vector_
     - set([ number, ], shouldReturn?): void | Vector.
     - put(index, value): void

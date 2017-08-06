@@ -7,10 +7,14 @@
  */
 
 export function swapInArray<T>(firstIndex: number, secondIndex: number, array: T[]) {
-    let temp = array[firstIndex];
 
-    array[firstIndex] = array[secondIndex];
-    array[secondIndex] = temp;
+    if( array instanceof Array ) {
+        let temp = array[firstIndex];
 
-    temp = null;
+        array[firstIndex] = array[secondIndex];
+        array[secondIndex] = temp;
+
+        temp = null;
+    }
+
 }

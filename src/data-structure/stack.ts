@@ -4,7 +4,7 @@ import {Bag} from "./bag";
 /*
  This is an implementation of a Stack data structure.
  It implements:
-     isEmpty()
+     createEmpty()
      size()
      push(..)
      pop()
@@ -31,14 +31,14 @@ export class Stack<T> extends Bag<T>{
     }
 
     pop(): T{
-        if( this.isEmpty() ){ console.log( 'Stack underflow exception' ); }
+        if( this.isEmpty() ) throw Error('stack underflow exception');
         let itemToReturn: T = this.first.item;
         this.first = this.first.next;
         return itemToReturn;
     }
 
     peek(): T{
-        if( this.isEmpty() ){ console.log( 'Stack underflow exception' ); }
+        if( this.isEmpty() ) throw Error('stack underflow exception');
         return this.first.item;
     }
 

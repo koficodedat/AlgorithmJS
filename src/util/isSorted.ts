@@ -1,4 +1,5 @@
 import { compare } from './compare';
+import {hasSameType} from "./hasSameType";
 
 /*
  isSorted(..)
@@ -7,14 +8,16 @@ import { compare } from './compare';
  @return: { boolean } - returns a boolean
  */
 
-export function isSorted<T>(array: T[]): boolean{
+export function isSorted<T>(array: (number | string)[]): boolean{
 
-    if( array instanceof Array ) { //TODO: implement a function to check if all values of the list are of the same type
+    if( array instanceof Array && hasSameType(array) ) {
 
         for( let i = 1; i < array.length; i++ ){
             if( compare(array[i], array[i - 1]) === -1 ) return false;
         }
+
+        return true;
     }
 
-    return true;
+    return undefined;
 }
