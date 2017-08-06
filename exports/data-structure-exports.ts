@@ -3,7 +3,6 @@ import {Queue} from "../src/data-structure/queue";
 import {Stack} from "../src/data-structure/stack";
 import {VectorImpl} from "../src/data-structure/vector";
 import {BinSearchTree} from "../src/data-structure/binSearchTree";
-import {BalancedBinSearchTree} from "../src/data-structure/balBinSearchTree";
 import {MatrixImpl} from "../src/data-structure/matrix";
 import {DictionaryImpl} from "../src/data-structure/dictionary";
 
@@ -14,7 +13,6 @@ export namespace DataStructure {
     _stack = Stack;
     _vector = VectorImpl;
     _binSearchTree = BinSearchTree;
-    _balBinSearchTree = BalancedBinSearchTree;
     _matrix = MatrixImpl;
     _dictionary = DictionaryImpl;
 
@@ -23,7 +21,6 @@ export namespace DataStructure {
     export declare let _stack;
     export declare let _vector;
     export declare let _binSearchTree;
-    export declare let _balBinSearchTree;
     export declare let _matrix;
     export declare let _dictionary;
 

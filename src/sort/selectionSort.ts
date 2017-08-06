@@ -1,5 +1,6 @@
 import { compare } from '../util/compare';
 import { swapInArray } from '../util/swapInArray';
+import {hasSameType} from "../util/hasSameType";
 
 /*
  selectionSort(..)
@@ -7,16 +8,16 @@ import { swapInArray } from '../util/swapInArray';
  not suitable for large sets of data
  performs  O(n2) in worst case
 
- @param: {  T[] { number[] | string[] } } array - takes an array of generic items
- @return: { number } T[] { number[] | string[] } - returns an array
+ @param: { (number | string)[] } array - takes an array of generic items
+ @return: { (number | string)[] } - returns an array
 
  has side effects
  */
 
 
-export function selectionSort(array: any[]): any[] {
+export function selectionSort(array: (number | string)[]): (number | string)[] {
 
-    if( array instanceof Array ){
+    if( array instanceof Array && hasSameType(array) ){
 
         let length: number = array.length;
 

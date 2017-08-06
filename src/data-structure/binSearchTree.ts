@@ -14,19 +14,20 @@ export class BinSearchTree<V> extends SearchTree<V>{
         super();
     }
 
-    remove(key: number | string){
-        if (key === null || key === undefined) throw new Error("Called delete() with a null key");
-        if(this.root !== null && typeof key === this.root.key) throw new Error('Key is of different type than root');
+    remove(key: number | string): void{
+        if ( key === null || key === undefined ) throw new Error("called remove() with a null key");
+        if( (typeof key) !== (typeof this.root.key) ) throw new Error('remove(..): key is of different type than root');
+        if( !this.contains(key) ) return;
         this.root = this.removeInNodeAtKey(this.root,key);
     }
 
     removeMin(){
-        if (this.isEmpty()) throw new Error("Tree underflow");
-        return this.removeMinNodeFrom(this.root);
+        if (this.isEmpty()) throw new Error("tree underflow");
+        this.root = this.removeMinNodeFrom(this.root);
     }
 
     removeMax(){
-        if (this.isEmpty()) throw new Error("Tree underflow");
+        if (this.isEmpty()) throw new Error("tree underflow");
         this.root = this.removeMaxNodeFrom(this.root);
     }
 
@@ -35,11 +36,11 @@ export class BinSearchTree<V> extends SearchTree<V>{
     //private / protected functions
 
     getFromNodeAtKey(node: TreeNode<V>, key: number | string): V{
-        if (key === null || key === undefined) throw new Error("Called getFromNodeAtKey() with a null key");
-        if(this.root !== null && typeof key === this.root.key) throw new Error('Key is of different type than root');
+        if (key === null || key === undefined) throw new Error("called getFromNodeAtKey() with a null key");
+        if (this.root !== null && typeof key === this.root.key) throw new Error('key is of different type than root');
         if (node === null || node === undefined) return null;
 
-        let _compare = compare(key,node.key);
+        let _compare = !this.shouldParseToFloat ? compare(key,node.key) : compare(BinSearchTree.parseFloat(key),BinSearchTree.parseFloat(node.key));
 
         if( _compare < 0 ) return this.getFromNodeAtKey(node.left,key);
         if( _compare > 0 ) return this.getFromNodeAtKey(node.right,key);
@@ -48,15 +49,14 @@ export class BinSearchTree<V> extends SearchTree<V>{
     }
 
     putInNodeAtKey(node: TreeNode<V>, key: number | string, value: V) : TreeNode<V>{
-        if(key === null || key === undefined) throw new Error("Called put() with a null key");
         if(node === null || node === undefined) return { key: key, value: value, left: null, right: null, size: 1 };
 
-        let _compare = compare(key,node.key);
+        let _compare = !this.shouldParseToFloat ? compare(key,node.key) : compare(BinSearchTree.parseFloat(key),BinSearchTree.parseFloat(node.key));
 
         if( _compare < 0 ) node.left = this.putInNodeAtKey(node.left,key,value);
         else if( _compare > 0 ) node.right =  this.putInNodeAtKey(node.right,key,value);
         else node.value = value;
-        node.size = this.sizeOfNode(node.left) + this.sizeOfNode(node.right) + 1;
+        node.size = BinSearchTree.sizeOfNode(node.left) + BinSearchTree.sizeOfNode(node.right) + 1;
 
         return node;
     }
@@ -64,9 +64,9 @@ export class BinSearchTree<V> extends SearchTree<V>{
     removeInNodeAtKey(node: TreeNode<V>, key: number | string): TreeNode<V>{
         if(node === null || node === undefined) return null;
 
-        let _compare = compare(key,node.key);
+        const _compare = !this.shouldParseToFloat ? compare(key,node.key) : compare(BinSearchTree.parseFloat(key),BinSearchTree.parseFloat(node.key));
 
-        if( _compare < 0 ) node.left =  this.removeInNodeAtKey(node.left,key)
+        if( _compare < 0 ) node.left =  this.removeInNodeAtKey(node.left,key);
         else if( _compare > 0 ) node.right =  this.removeInNodeAtKey(node.right,key);
         else{
             if( node.right === null) return node.left;
@@ -79,7 +79,7 @@ export class BinSearchTree<V> extends SearchTree<V>{
 
         }
 
-        node.size = this.sizeOfNode(node.left) + this.sizeOfNode(node.right) + 1;
+        node.size = BinSearchTree.sizeOfNode(node.left) + BinSearchTree.sizeOfNode(node.right) + 1;
 
         return node;
     }
@@ -87,14 +87,14 @@ export class BinSearchTree<V> extends SearchTree<V>{
     removeMinNodeFrom(node: TreeNode<V>): TreeNode<V>{
         if(node.left === null) return node.right;
         node.left = this.removeMinNodeFrom(node.left);
-        node.size = this.sizeOfNode(node.left) + this.sizeOfNode(node.right) + 1;
+        node.size = BinSearchTree.sizeOfNode(node.left) + BinSearchTree.sizeOfNode(node.right) + 1;
         return node;
     }
 
     removeMaxNodeFrom(node: TreeNode<V>): TreeNode<V>{
         if(node.right === null) return node.left;
         node.right = this.removeMaxNodeFrom(node.right);
-        node.size = this.sizeOfNode(node.left) + this.sizeOfNode(node.right) + 1;
+        node.size = BinSearchTree.sizeOfNode(node.left) + BinSearchTree.sizeOfNode(node.right) + 1;
         return node;
     }
 }

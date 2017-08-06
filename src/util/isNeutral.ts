@@ -6,6 +6,6 @@
  @return: { boolean } - returns a boolean
  */
 
-export function isNeutral(number: number){
+export function isNeutral(number: number): boolean{
     return number === 0;
 }

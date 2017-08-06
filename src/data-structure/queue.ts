@@ -4,7 +4,7 @@ import { UniIteratorImpl } from "../util/iterator";
 /*
  This is an implementation of a Queue data structure.
  It implements:
-     isEmpty()
+     createEmpty()
      size()
      peek()
      enqueue(..)
@@ -33,7 +33,7 @@ export class Queue<T>{
     }
 
     peek(): T{
-        if( this.isEmpty() ) throw new Error('Queue underflow exception');
+        if( this.isEmpty() ) throw new Error('queue underflow exception');
         return this.first.item;
     }
 
@@ -49,7 +49,7 @@ export class Queue<T>{
 
     dequeue(): T{
         let itemToDequeue: T;
-        if( this.isEmpty() ) throw new Error('Queue underflow exception');
+        if( this.isEmpty() ) throw new Error('queue underflow exception');
 
         itemToDequeue = this.first.item;
         this.first = this.first.next;

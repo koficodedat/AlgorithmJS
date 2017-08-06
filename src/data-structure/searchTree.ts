@@ -6,7 +6,7 @@ import {Queue} from "./queue";
 /*
  This is an implementation of the base functionality of a Binary Search Tree with Key/Value Pairs data structure.
  It implements:
-     isEmpty()
+     createEmpty()
      size()
      contains(..)
      get(..)
@@ -29,6 +29,7 @@ import {Queue} from "./queue";
 export abstract class SearchTree<V>{
 
     protected root: TreeNode<V> | BalancedTreeNode<V>;
+    protected shouldParseToFloat: boolean = undefined;
 
     constructor(){
         this.root = null;
@@ -39,12 +40,12 @@ export abstract class SearchTree<V>{
     }
 
     size(): number{
-        return this.sizeOfNode(this.root);
+        return SearchTree.sizeOfNode(this.root);
     }
 
     contains(key: number | string): boolean{
-        if(key === null || key === undefined) throw new Error('Argument to contains() is null');
-        if(this.root !== null && typeof key === this.root.key) throw new Error('Key is of different type than root');
+        if( key === null || key === undefined ) throw new Error('argument to contains() is null');
+        if( this.root !== null && (typeof key) !== (typeof this.root.key) ) throw new Error('key is of different type than root');
         return this.get(key) !== null;
     }
 
@@ -53,8 +54,11 @@ export abstract class SearchTree<V>{
     }
 
     put(key: number | string, value: V){
-        if(key === null || key === undefined) throw new Error("Called put() with a null key");
-        if(this.root !== null && typeof key === this.root.key) throw new Error('Key is of different type than root');
+        if(key === null || key === undefined) throw new Error("called put() with a null key");
+        if( this.root !== null && (typeof key) !== (typeof this.root.key) ) throw new Error('key is of different type than root');
+
+        if( this.shouldParseToFloat === undefined ) this.shouldParseToFloat = SearchTree.canParseToFloat(key);
+
         if(value === null) {
             this.remove(key);
             return;
@@ -69,27 +73,27 @@ export abstract class SearchTree<V>{
     abstract removeMax();
 
     minKey(): number | string{
-        if (this.isEmpty()) throw new Error("Called min() with empty tree");
+        if (this.isEmpty()) throw new Error("called min() with createEmpty tree");
         else return this.getMinNodeFrom(this.root).key;
     }
 
     maxKey(): number | string{
-        if (this.isEmpty()) throw new Error("Called min() with empty tree");
+        if (this.isEmpty()) throw new Error("called max() with createEmpty tree");
         else return this.getMaxNodeFrom(this.root).key;
     }
 
     floor(key: number | string): number | string{
-        if(key === null || key === undefined) throw new Error("Argument to floor() is null");
-        if(this.isEmpty()) throw new Error("Called floor() with empty tree");
+        if(key === null || key === undefined) throw new Error("argument to floor() is null");
+        if(this.isEmpty()) throw new Error("called floor() with createEmpty tree");
 
-        const floorNode =  this.floorFromNodeToKey(this.root,key);
+        const floorNode = this.floorFromNodeToKey(this.root,key);
 
         return floorNode === null || floorNode === undefined ? null : floorNode.key;
     }
 
     ceil(key: number | string): number | string{
         if(key === null || key === undefined) throw new Error("Argument to floor() is null");
-        if(this.isEmpty()) throw new Error("Called ceil() with empty tree");
+        if(this.isEmpty()) throw new Error("called ceil() with createEmpty tree");
 
         const ceilNode =  this.ceilFromNodeToKey(this.root,key);
 
@@ -97,12 +101,13 @@ export abstract class SearchTree<V>{
     }
 
     rank(key: number | string): number{
-        if (key === null || key === undefined) throw new Error("Argument to rank() is null");
+        if (key === null || key === undefined) throw new Error("argument to rank() is null");
+        if( !this.contains(key) ) throw new Error("key does not exist");
         return this.rankOfKeyFromNode(key, this.root);
     }
 
     selectKeyForRank(rank: number): string | number{
-        if( rank < 0 || rank > this.size() || rank === null ) throw new Error("Called selectKeyForRank() with invalid argument");
+        if( rank < 0 || rank > this.size() - 1 || rank === null ) throw new Error("called selectKeyForRank() with invalid argument");
         return this.nodeAtRankFromNode(rank, this.root).key;
     }
 
@@ -140,7 +145,7 @@ export abstract class SearchTree<V>{
 
     //private / protected functions
 
-    protected sizeOfNode(node: TreeNode<V> | BalancedTreeNode<V>): number{
+    protected static sizeOfNode<V>(node: TreeNode<V> | BalancedTreeNode<V>): number{
         if(node === null || node === undefined) return 0;
         return node.size;
     }
@@ -156,11 +161,15 @@ export abstract class SearchTree<V>{
     protected abstract removeMaxNodeFrom(node: TreeNode<V> | BalancedTreeNode<V>): TreeNode<V> | BalancedTreeNode<V>;
 
     protected getMinNodeFrom(node: TreeNode<V> | BalancedTreeNode<V>): TreeNode<V> | BalancedTreeNode<V>{
+        if( node === null || node === undefined ) throw new Error("called getMinNodeFrom(..) with a null key");
+
         if(node.left === null) return node;
         else return this.getMinNodeFrom(node.left);
     }
 
     protected getMaxNodeFrom(node: TreeNode<V> | BalancedTreeNode<V>): TreeNode<V> | BalancedTreeNode<V>{
+        if( node === null || node === undefined ) throw new Error("called getMaxNodeFrom(..) with a null key");
+
         if(node.right === null) return node;
         else return this.getMaxNodeFrom(node.right);
     }
@@ -168,7 +177,7 @@ export abstract class SearchTree<V>{
     protected floorFromNodeToKey(node: TreeNode<V> | BalancedTreeNode<V>, key: number | string): TreeNode<V> | BalancedTreeNode<V>{
         if(node === null || node === undefined) return null;
 
-        let _compare = compare(key,node.key);
+        let _compare = !this.shouldParseToFloat ? compare(key,node.key) : compare(SearchTree.parseFloat(key),SearchTree.parseFloat(node.key));
 
         if( _compare === 0 ) return node;
         if( _compare < 0 ) return this.floorFromNodeToKey(node.left, key);
@@ -182,7 +191,7 @@ export abstract class SearchTree<V>{
     protected ceilFromNodeToKey(node: TreeNode<V> | BalancedTreeNode<V>, key: number | string): TreeNode<V> | BalancedTreeNode<V>{
         if(node === null || node === undefined) return null;
 
-        let _compare = compare(key,node.key);
+        let _compare = !this.shouldParseToFloat ? compare(key,node.key) : compare(SearchTree.parseFloat(key),SearchTree.parseFloat(node.key));
 
         if( _compare === 0 ) return node;
         if( _compare > 0 ) return this.ceilFromNodeToKey(node.right, key);
@@ -196,43 +205,41 @@ export abstract class SearchTree<V>{
     protected rankOfKeyFromNode(key: number | string, node: TreeNode<V> | BalancedTreeNode<V>): number {
         if(node === null || node === undefined) return 0;
 
-        let _compare = compare(key,node.key);
+        let _compare = !this.shouldParseToFloat ? compare(key,node.key) : compare(SearchTree.parseFloat(key),SearchTree.parseFloat(node.key));
 
         if( _compare < 0 ) return this.rankOfKeyFromNode(key, node.left);
-        if( _compare > 0 ) return 1 + this.sizeOfNode(node.left) + this.rankOfKeyFromNode(key, node.right);
-        else return this.sizeOfNode(node.left);
+        else if( _compare > 0 ) return 1 + SearchTree.sizeOfNode(node.left) + this.rankOfKeyFromNode(key, node.right);
+        else return SearchTree.sizeOfNode(node.left);
     }
 
     protected nodeAtRankFromNode(rank: number, node: TreeNode<V> | BalancedTreeNode<V>): TreeNode<V> | BalancedTreeNode<V>{
         if(node === null || node === undefined) return null;
-        let leftSize = this.sizeOfNode(node.left);
+        let leftSize = SearchTree.sizeOfNode(node.left);
 
         if( leftSize < rank ) return this.nodeAtRankFromNode(rank - leftSize - 1, node.right);
-        if( leftSize > rank ) return this.nodeAtRankFromNode(rank, node.left);
-
-        return node;
-
+        else if( leftSize > rank ) return this.nodeAtRankFromNode(rank, node.left);
+        else return node;
     }
 
     protected getKeysInRange(from: number | string, to: number | string): (number | string)[]{
         if(from === null || from === undefined ) throw new Error("first argument to getKeysInRange() is null");
         if(to === null || to === undefined ) throw new Error("second argument to getKeysInRange() is null");
 
-        let queue: Queue<number | string> = new Queue<number | string>()
+        let queue: Queue<number | string> = new Queue<number | string>();
 
         this.addKeysToQueue(this.root, queue, from, to);
 
-        return queue.iterator().list()
+        return queue.iterator().list();
     }
 
     protected addKeysToQueue(node: TreeNode<V>, queue: Queue<number | string>, lo: number | string, hi: number | string ): void{
         if(node === null || node === undefined) return;
 
-        let _comparelo = compare(lo, node.key);
-        let _comparehi = compare(hi, node.key);
+        let _comparelo = !this.shouldParseToFloat ? compare(lo,node.key) : compare(SearchTree.parseFloat(lo),SearchTree.parseFloat(node.key));
+        let _comparehi = !this.shouldParseToFloat ? compare(hi,node.key) : compare(SearchTree.parseFloat(hi),SearchTree.parseFloat(node.key));
 
         if( _comparelo < 0 ) this.addKeysToQueue(node.left, queue, lo, hi);
-        if( _comparelo <= 0 && _comparehi >= 0) queue.enqueue(node.key);
+        if( _comparelo <= 0 && _comparehi >= 0 ) queue.enqueue(node.key);
         if( _comparehi > 0 ) this.addKeysToQueue(node.right, queue, lo, hi);
     }
 
@@ -240,7 +247,7 @@ export abstract class SearchTree<V>{
         if( from === null || from === undefined) throw new Error("first argument to getNodesInRange() is null");
         if( to === null || to === undefined) throw new Error("second argument to getNodesInRange() is null");
 
-        let queue: Queue<TreeNode<V>> = new Queue<TreeNode<V>>()
+        let queue: Queue<TreeNode<V>> = new Queue<TreeNode<V>>();
 
         this.addNodesToQueue(this.root, queue, from, to);
 
@@ -250,8 +257,8 @@ export abstract class SearchTree<V>{
     protected addNodesToQueue(node: TreeNode<V>, queue: Queue<TreeNode<V>>, lo: number | string, hi: number | string ): void{
         if(node === null || node === undefined) return;
 
-        let _comparelo = compare(lo, node.key);
-        let _comparehi = compare(hi, node.key);
+        let _comparelo = !this.shouldParseToFloat ? compare(lo,node.key) : compare(SearchTree.parseFloat(lo),SearchTree.parseFloat(node.key));
+        let _comparehi = !this.shouldParseToFloat ? compare(hi,node.key) : compare(SearchTree.parseFloat(hi),SearchTree.parseFloat(node.key));
 
         if( _comparelo < 0 ) this.addNodesToQueue(node.left, queue, lo, hi);
         if( _comparelo <= 0 && _comparehi >= 0) queue.enqueue(node);
@@ -261,6 +268,15 @@ export abstract class SearchTree<V>{
     protected heightFromNode(node: TreeNode<V> | BalancedTreeNode<V>): number{
         if(node === null || node === undefined) return -1;
         return 1 + Math.max( this.heightFromNode(node.left), this.heightFromNode(node.right) );
+    }
+
+    protected static canParseToFloat(key: number | string): boolean{
+        return  typeof key === 'string' && !isNaN(parseFloat(key));
+    }
+
+    protected static parseFloat(key: number | string): number{
+        if( !this.canParseToFloat(key) ) throw Error('cannot parse the string');
+        return parseFloat(key.toString());
     }
 
 }

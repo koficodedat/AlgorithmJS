@@ -34,6 +34,10 @@ import * as datastructure from './exports/data-structure-exports';
         swapInArray:    utility.Utility._swapInArray,
         uniform:        utility.Utility._uniform,
         round:          utility.Utility._round,
+        clone:          utility.Utility._clone,
+        contains:       utility.Utility._contains,
+        isEmpty:        utility.Utility._isEmpty,
+        isEqual:        utility.Utility._isEqual,
 
         //sorts
         binarySort:     sort.Sort._binarySort,
@@ -51,7 +55,6 @@ import * as datastructure from './exports/data-structure-exports';
         Stack:          datastructure.DataStructure._stack,
         Vector:         datastructure.DataStructure._vector,
         BSearchTree:    datastructure.DataStructure._binSearchTree,
-        BBSearchTree:   datastructure.DataStructure._balBinSearchTree,
         Matrix:         datastructure.DataStructure._matrix,
         Dictionary:     datastructure.DataStructure._dictionary
 
