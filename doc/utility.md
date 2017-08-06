@@ -40,7 +40,7 @@
     > el.arrayMax([1,2,3], 2) //{ key: 2, value: 3 }
 - _clone( source: any ): any_. nb: returns a deep copy of the source object. does not clone primitive types from the head: number, string and boolean.
     > el.clone([1,2]) //[1,2]
-- _contains( object: any, value: any): boolean_. nb: determines if an object of values contains a specific value. it only checks for the objects own properties
+- _contains( object: any, value: any): boolean_. nb: does a deep equality check to determining if an object of values contains a specific value. it only checks for the object's own properties
     > el.contains([1,2], 2) //true
 - _isEqual( ...object: any ): boolean_. nb: determines the value by value deep equality of two or more objects. it only checks for the objects own properties
     > el.isEqual([1,2],[1,2]) //true

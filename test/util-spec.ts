@@ -151,11 +151,26 @@ describe('utility function test', () =>{
             };
 
             assert.equal(true,contains(obj,'two'));
-            assert.equal(false,contains(obj,2));
             assert.equal(true,contains(obj,[1,2,3,4]));
             assert.equal(false,contains(obj,[1,2,4]));
             assert.equal(true,contains(obj,{ z: 'zed', isZ: true }));
             assert.equal(false,contains(obj,{ z: 'zed', isZ: false }));
+        });
+
+        it('should assert true or false for inner embedded value search depending on condition', () => {
+            const obj = { test:'test', complex: { has: true, num: 1, str: 'this is a string', c: { a: 'a' }, ar: [ { b: 'bbb', c: 'cecece' }, false ] } };
+
+            assert.equal(true,contains(obj,{ has: true, num: 1, str: 'this is a string', c: { a: 'a' }, ar: [ { b: 'bbb', c: 'cecece' }, false ] }));
+            assert.equal(true,contains(obj,true));
+            assert.equal(true,contains(obj, { a: 'a' }));
+            assert.equal(false,contains(obj, 'b'));
+            assert.equal(false,contains(obj, 2));
+            assert.equal(true,contains(obj, false));
+            assert.equal(true,contains(obj, 'cecece'));
+            assert.equal(true,contains(obj, 'bbb'));
+            assert.equal(false,contains(obj, 'bb'));
+            assert.equal(false,contains(obj, 'this is a strng'));
+            assert.equal(true,contains(obj, 'this is a string'));
         });
 
     });

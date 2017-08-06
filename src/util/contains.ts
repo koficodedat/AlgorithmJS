@@ -8,26 +8,35 @@
  for key-value objects, it only checks for the objects own properties.
  */
 
-import assert = require('assert');
 import {isEqual} from "./isEqual";
+import {isPrimitive} from "./isPrimitive";
 
 export function contains(object: any, value: any): boolean{
 
     if( object instanceof Array ) {
 
         for(let i = 0; i < object.length; i++){
-            if( isEqual(value,object[i]) ) return true;
+            if( deepContains(object[i],value) ) return true;
         }
 
         return false;
     }else if( typeof object === 'object' ){
 
         for( let i in object) {
-            if( object.hasOwnProperty(i) && isEqual(value,object[i]) ) return true;
+            if( object.hasOwnProperty(i) && deepContains(object[i],value) ) return true;
         }
 
         return false;
     }
 
     return undefined;
+}
+
+function deepContains(first: any, second: any): boolean{
+
+    if( isEqual(first,second) ) return true; //shallow check
+    if( !isPrimitive(first) ) return contains(first,second);
+
+    return false;
+
 }

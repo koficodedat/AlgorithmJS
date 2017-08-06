@@ -27,7 +27,7 @@ export function isEqual(...objects): boolean{
 
 function isDeepEqual(first: any, second: any): boolean{
 
-    if( typeof first !== typeof second ) return false;
+    if( (typeof first) !== (typeof second) ) return false;
 
     else if( isPrimitive(first) || ( isNothing(first) && isNothing(second) )) return first === second;
 
