@@ -1,12 +1,4 @@
-.idea/algorithmjs.iml
-
-.idea/modules.xml
-
-.idea/typescript-compiler.xml
-
-.idea/workspace.xml
-
-.idea/vcs.xml
+.idea
 
 node_modules
 
