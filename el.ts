@@ -38,6 +38,7 @@ import * as datastructure from './exports/data-structure-exports';
         contains:       utility.Utility._contains,
         isEmpty:        utility.Utility._isEmpty,
         isEqual:        utility.Utility._isEqual,
+        accumulate:     utility.Utility._accumulate,
 
         //sorts
         binarySort:     sort.Sort._binarySort,

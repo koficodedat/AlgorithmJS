@@ -22,6 +22,7 @@ import {isEmpty} from "../src/util/isEmpty";
 import {isEqual} from "../src/util/isEqual";
 import {isNothing} from "../src/util/isNothing";
 import {isPrimitive} from "../src/util/isPrimitive";
+import {accumulate} from "../src/util/accumulate";
 
 export namespace Utility{
 
@@ -49,6 +50,7 @@ export namespace Utility{
     _isEqual = isEqual;
     _isNothing = isNothing;
     _isPrimitive = isPrimitive;
+    _accumulate = accumulate;
 
     export declare let _arraySum;
     export declare let _arrayMin;
@@ -74,4 +76,5 @@ export namespace Utility{
     export declare let _isEqual;
     export declare let _isNothing;
     export declare let _isPrimitive;
+    export declare let _accumulate;
 }

@@ -15,20 +15,11 @@
     var sortedList = el.mergeSort([3,5,2,6,4]); // [2,3,4,5,6]
     
 #### Version
->    1.0.27
+>    1.0.28
 
-#### New in Version 1.0.26
+#### New in Version 1.0.28
 _Utility_
-- _clone( source: any ): any_.
-- _contains( object: any, value: any): boolean_.
-- _isEqual( ...object: any ): boolean_.
-- _isEmpty( object: any ): boolean_.
-
-_Data Structure_
-
-- _BalanceBinarySerachTree_
-  - **__removed this data structure _for now_ to fix a fundamental bug found during testing.__
-  
+- _accumulate( source: string | number[], callback ): void_.
   
 #### Testing
     Run either 'npm test' or 'gulp' on command line after compiling .ts files to .js files.
