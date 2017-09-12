@@ -46,7 +46,7 @@
     > el.isEqual([1,2],[1,2]) //true
 - _isEmpty( object: any ): boolean_. nb: determines if an object is empty
     > el.isEmpty([]) //true
-- _accumulate(source: number[] | string, callback)_ nb: calculates the mean, variance and standard deviation of a series of numbers from an array or a file system path
+- _accumulate(source: number[] | string, callback)_ nb: calculates the running mean, variance and standard deviation of a series of numbers from an array or a file system path
 ```ecmascript 6
     //from array
     el.accumulate([1,2,3,4],(err, data) => {
