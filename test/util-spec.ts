@@ -442,9 +442,9 @@ describe('utility function test', () =>{
 
     describe('accumulate(..)', () =>{
 
-        it('should return { mean: 0.7916666666666666, variance: 4.0625, std: 2.0155644370746373, processed: 4 }', () => {
+        it('should return { mean: 2.5, runningMean: 0.7916666666666666, variance: 4.0625, std: 2.0155644370746373, processed: 4 }', () => {
             accumulate([1,2,3,4],(err, data) => {
-                assert.deepEqual({ mean: 0.7916666666666666, variance: 4.0625, std: 2.0155644370746373, processed: 4 },data);
+                assert.deepEqual({ mean: 2.5, runningMean: 0.7916666666666666, variance: 4.0625, std: 2.0155644370746373, processed: 4 },data);
             });
         });
 
