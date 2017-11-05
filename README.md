@@ -15,11 +15,13 @@
     var sortedList = el.mergeSort([3,5,2,6,4]); // [2,3,4,5,6]
     
 #### Version
->    1.0.28
+>    1.0.29
 
-#### New in Version 1.0.28
-_Utility_
-- _accumulate( source: string | number[], callback ): void_.
+#### New in Version 1.0.29
+_Fixes_
+- Fixed issue with _arrayMax( ... )_ utility function.
+- Fixed  _compare( ... )_ function documentation.
+- Updated functionality and documentation of _accumulate( ... )_ to add runningMean.
   
 #### Testing
     Run either 'npm test' or 'gulp' on command line after compiling .ts files to .js files.

@@ -11,7 +11,7 @@
 - _average([ number, ]): number_
     > el.average([1,2,3]) //2
 - _compare(T,T): number_. nb: T = number | string 
-    > el.compare([3,1]) //1
+    > el.compare(3,1) //1
 - _inversions([ number, ]): number_. nb: returns the number of swaps necessary for the list to be sorted
     > el.inversions(['c','b','a']) //3
 - _isSorted([ T, ]): boolean_. nb: T = number | string 
@@ -34,10 +34,10 @@
     > el.round(1.23456, 2) //1.23
 - _arrayProduct([ number, ]): boolean_.
     > el.arrayProduct([1,2,3]) //6
-- _arrayMin([ number, ], after?): boolean_. nb: get the first occurrence of the minimum index and number in an array starting from the optional _after_ clause.
-    > el.arrayMin([1,2,3], 1) //{ key: 0, value: 1 }
-- _arrayMax([ number, ], before?): boolean_. nb: get the first occurrence of the maximum index and number in an array starting after the optional _before_ clause.
-    > el.arrayMax([1,2,3], 2) //{ key: 2, value: 3 }
+- _arrayMin([ number, ], after?): boolean_. nb: get the first occurrence of the minimum value as _value_ and index of that value as _key_ in an array starting from the optional _after value_ clause.
+    > el.arrayMin([4,3,-4,25,45,23,-1,6,20], 20) //{ key: 5, value: 23 }
+- _arrayMax([ number, ], before?): boolean_. nb: get the first occurrence of the maximum value as _value_ and  index of that value as _key_ in an array starting after the optional _before value_ clause.
+    > el.arrayMax([4,3,-4,25,45,23,-1,6,20], 3) //{ key: 6, value: -1 }
 - _clone( source: any ): any_. nb: returns a deep copy of the source object. does not clone primitive types from the head: number, string and boolean.
     > el.clone([1,2]) //[1,2]
 - _contains( object: any, value: any): boolean_. nb: does a deep equality check to determining if an object of values contains a specific value. it only checks for the object's own properties

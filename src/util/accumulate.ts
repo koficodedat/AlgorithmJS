@@ -11,7 +11,6 @@ import {ICallback} from "../interfaces/iCallback";
 
 const fs = require('fs');
 const readline = require('readline');
-const stream = require('stream');
 const Rx = require('rxjs/Rx');
 
 

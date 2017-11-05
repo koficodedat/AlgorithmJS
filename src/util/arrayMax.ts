@@ -1,7 +1,7 @@
 /*
  @since 1.0.25
  arrayMax(..)
- gets the minimum value in an array
+ gets the maximum value in an array
  @param: { data } array
  @param: { before } number - optional( used to search for maximum before this number )
  @return: { number } - returns a number
@@ -19,7 +19,7 @@ export function arrayMax<T>(data: (number | string)[], before?: number): Diction
             ( value, index ) => {
                 if( before !== undefined ){
                     if( max ){
-                        if( value < before && max.value > value ) max = { key: index, value: value }
+                        if( value < before && max.value < value ) max = { key: index, value: value }
                     }
                     else{
                         if( value < before ) max = { key: index, value: value }
