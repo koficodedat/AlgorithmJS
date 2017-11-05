@@ -55,5 +55,11 @@
     });
 
     //from file
-    el.accumulate( 'path/to/some/file/on/file/system', callback );
+    //will take only numbers in the file one line at a time. all other characters are ignored
+    //example formats are:
+    //  1,2,3,4
+    //  5 6 7 8
+    //  [9 10 11 12]
+    //  ...
+    el.accumulate( 'absolute/path/to/some/file/on/file/system', callback );
 ```
