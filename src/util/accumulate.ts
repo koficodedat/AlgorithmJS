@@ -1,7 +1,7 @@
 /*
  @since 1.0.28
  accumulate(..)
- calculates the mean, variance and standard deviation of a series of numbers from an array or a file system path
+ calculates the running mean, mean, variance and standard deviation of a series of numbers from an array or a file system path
  @param: { source } string | number[]
  @param: { callback } Function
  */
@@ -20,6 +20,8 @@ export function accumulate(source: number[] | string, callback: ICallback ): voi
     let data : IAccumulator = {
         processed: 0,
         mu: 0,
+        total: 0,
+        mean: 0,
         sum: 0
     };
 
@@ -38,7 +40,8 @@ export function accumulate(source: number[] | string, callback: ICallback ): voi
                     },
                     () => {
                         callback(null, {
-                            mean: data.mu,
+                            mean: data.mean,
+                            runningMean: data.mu,
                             variance: variance(data),
                             std: std(data),
                             processed: data.processed
@@ -71,7 +74,8 @@ export function accumulate(source: number[] | string, callback: ICallback ): voi
                     },
                     () => {
                         callback(null, {
-                            mean: data.mu,
+                            mean: data.mean,
+                            runningMean: data.mu,
                             variance: variance(data),
                             std: std(data),
                             processed: data.processed
@@ -88,6 +92,8 @@ function run( value: number, data: IAccumulator ): IAccumulator{
     const delta = value - data.mu;
     data.processed++;
     data.mu = delta / data.processed;
+    data.total = data.total + value;
+    data.mean = data.total / data.processed;
     data.sum = data.sum + (data.processed - 1) / data.processed * delta * delta;
 
     return data;
@@ -105,5 +111,7 @@ function std( data ): number{
 interface IAccumulator{
     processed: number,
     mu: number,
+    total: number,
+    mean: number,
     sum: number
 }
